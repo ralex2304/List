@@ -1,0 +1,53 @@
+\doxysection{log.\+cpp}
+\hypertarget{log_8cpp_source}{}\label{log_8cpp_source}\index{src/log/log.cpp@{src/log/log.cpp}}
+\mbox{\hyperlink{log_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{log_8h}{log.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00003}\mbox{\hyperlink{log_8cpp_adab5e89ed01fa9fb9c55544d3a21629b}{00003}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{log_8cpp_adab5e89ed01fa9fb9c55544d3a21629b}{log\_printf}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ \mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...)\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00004}00004\ \ \ \ \ assert(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}});}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00005}00005\ \ \ \ \ assert(format);}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordtype}{bool}\ file\_is\_opened\_here\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{log_8cpp_a14e1237e4072873a2976b48d52b10429}{log\_open\_file}}(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}))}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ file\_is\_opened\_here\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00014}00014\ \ \ \ \ va\_list\ arg\_list\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00015}00015\ \ \ \ \ va\_start(arg\_list,\ format);}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{int}\ ret\ =\ vfprintf(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}},\ format,\ arg\_list);}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (file\_is\_opened\_here)}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{log_8cpp_a4294d549b20fd1af99c3fbee5cf4dc99}{log\_close\_file}}(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}))}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{return}\ ret;}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00026}\mbox{\hyperlink{log_8cpp_a14e1237e4072873a2976b48d52b10429}{00026}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8cpp_a14e1237e4072873a2976b48d52b10429}{log\_open\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ \mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ mode)\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00027}00027\ \ \ \ \ assert(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}});}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ =\ fopen(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b}{filename}},\ mode);}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ opening\ log\_file\ file"{}});}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00039}\mbox{\hyperlink{log_8cpp_a4294d549b20fd1af99c3fbee5cf4dc99}{00039}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8cpp_a4294d549b20fd1af99c3fbee5cf4dc99}{log\_close\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ \mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}})\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (fclose(\mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}})\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ closing\ log\_file\ file"{}});}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{list_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}-\/>\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{log_8cpp_source_l00047}00047\ \}}
+
+\end{DoxyCode}
