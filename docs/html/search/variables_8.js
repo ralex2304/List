@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['poison_0',['POISON',['../struct_list_node.html#ac162e855f91f6040d224ad8a714fb449',1,'ListNode']]],
-  ['poison_5flist_5fnode_1',['POISON_LIST_NODE',['../list_8h.html#a2e7264da34a5ef9cca50aadcc29b0dbc',1,'list.h']]],
-  ['prev_2',['prev',['../struct_list_node.html#a00da3815b26fa42ecd7fe8f3b846b7dc',1,'ListNode']]]
+  ['name_0',['name',['../struct_var_code_data.html#a0bde6b05c83fb7bdf1a0f20fa4677762',1,'VarCodeData']]],
+  ['next_1',['next',['../struct_list_node.html#abcb2cbe2aeb6e214c35c2a0e82a0375b',1,'ListNode']]]
 ];

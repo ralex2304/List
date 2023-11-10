@@ -12,9 +12,16 @@ Log file data struct.
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b}{filename}} = nullptr
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_log_file_data_a08317b020a10b14f4a31d35d4c2237fb}{dir}} = nullptr
 \item 
 FILE \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}} = nullptr
+\item 
+char \mbox{\hyperlink{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}{timestamp\+\_\+dir}} \mbox{[}\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\+\_\+\+FILENAME\+\_\+\+LEN}}\mbox{]} = \{\}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const size\+\_\+t \mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\+\_\+\+FILENAME\+\_\+\+LEN}} = 256
 \end{DoxyCompactItemize}
 
 
@@ -26,11 +33,25 @@ You may use \doxylink{struct_log_file_data}{Log\+File\+Data} as global var
 \end{DoxyAttention}
 
 
-Definition at line \mbox{\hyperlink{log_8h_source_l00015}{15}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+Definition at line \mbox{\hyperlink{log_8h_source_l00026}{26}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
 
 
 
 \doxysubsection{Member Data Documentation}
+\Hypertarget{struct_log_file_data_a08317b020a10b14f4a31d35d4c2237fb}\label{struct_log_file_data_a08317b020a10b14f4a31d35d4c2237fb} 
+\index{LogFileData@{LogFileData}!dir@{dir}}
+\index{dir@{dir}!LogFileData@{LogFileData}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} Log\+File\+Data\+::dir = nullptr}
+
+
+
+Definition at line \mbox{\hyperlink{log_8h_source_l00027}{27}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{log_8cpp_source_l00050}{log\+\_\+create\+\_\+timestamp\+\_\+dir()}}, and \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}.
+
 \Hypertarget{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}\label{struct_log_file_data_a6cee51f74b20002956d076717f2a416c} 
 \index{LogFileData@{LogFileData}!file@{file}}
 \index{file@{file}!LogFileData@{LogFileData}}
@@ -39,25 +60,39 @@ Definition at line \mbox{\hyperlink{log_8h_source_l00015}{15}} of file \mbox{\hy
 
 
 
-Definition at line \mbox{\hyperlink{log_8h_source_l00017}{17}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+Definition at line \mbox{\hyperlink{log_8h_source_l00028}{28}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
 
 
 
-Referenced by \mbox{\hyperlink{log_8cpp_source_l00039}{log\+\_\+close\+\_\+file()}}, \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}, and \mbox{\hyperlink{log_8cpp_source_l00003}{log\+\_\+printf()}}.
+Referenced by \mbox{\hyperlink{log_8cpp_source_l00072}{log\+\_\+close\+\_\+file()}}, \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}, and \mbox{\hyperlink{log_8cpp_source_l00003}{log\+\_\+printf()}}.
 
-\Hypertarget{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b}\label{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b} 
-\index{LogFileData@{LogFileData}!filename@{filename}}
-\index{filename@{filename}!LogFileData@{LogFileData}}
-\doxysubsubsection{\texorpdfstring{filename}{filename}}
-{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} Log\+File\+Data\+::filename = nullptr}
-
-
-
-Definition at line \mbox{\hyperlink{log_8h_source_l00016}{16}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+\Hypertarget{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}\label{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5} 
+\index{LogFileData@{LogFileData}!MAX\_FILENAME\_LEN@{MAX\_FILENAME\_LEN}}
+\index{MAX\_FILENAME\_LEN@{MAX\_FILENAME\_LEN}!LogFileData@{LogFileData}}
+\doxysubsubsection{\texorpdfstring{MAX\_FILENAME\_LEN}{MAX\_FILENAME\_LEN}}
+{\footnotesize\ttfamily const size\+\_\+t Log\+File\+Data\+::\+MAX\+\_\+\+FILENAME\+\_\+\+LEN = 256\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Referenced by \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}.
+Definition at line \mbox{\hyperlink{log_8h_source_l00030}{30}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{log_8cpp_source_l00050}{log\+\_\+create\+\_\+timestamp\+\_\+dir()}}, and \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}.
+
+\Hypertarget{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}\label{struct_log_file_data_a6590abf896eaa61ac742810928e553e4} 
+\index{LogFileData@{LogFileData}!timestamp\_dir@{timestamp\_dir}}
+\index{timestamp\_dir@{timestamp\_dir}!LogFileData@{LogFileData}}
+\doxysubsubsection{\texorpdfstring{timestamp\_dir}{timestamp\_dir}}
+{\footnotesize\ttfamily char Log\+File\+Data\+::timestamp\+\_\+dir\mbox{[}\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\+\_\+\+FILENAME\+\_\+\+LEN}}\mbox{]} = \{\}}
+
+
+
+Definition at line \mbox{\hyperlink{log_8h_source_l00031}{31}} of file \mbox{\hyperlink{log_8h_source}{log.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{log_8cpp_source_l00050}{log\+\_\+create\+\_\+timestamp\+\_\+dir()}}, and \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}.
 
 
 

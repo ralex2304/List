@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['var_5fcode_5fdata_0',['VAR_CODE_DATA',['../macros_8h.html#a68960fb933bea9b067598ca388e5b6d5',1,'macros.h']]],
-  ['var_5fcode_5fdata_5fptr_1',['VAR_CODE_DATA_PTR',['../macros_8h.html#a8b6dac4dee6062b891084db600caa7ec',1,'macros.h']]],
-  ['var_5fdata_2',['var_data',['../struct_list.html#a99870814048969d69e134dc076f4cf43',1,'List']]],
-  ['varcodedata_3',['VarCodeData',['../struct_var_code_data.html',1,'']]]
+  ['text_5flib_2ecpp_0',['text_lib.cpp',['../text__lib_8cpp.html',1,'']]],
+  ['text_5flib_2eh_1',['text_lib.h',['../text__lib_8h.html',1,'']]],
+  ['timestamp_5fdir_2',['timestamp_dir',['../struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4',1,'LogFileData']]]
 ];

@@ -1,6 +1,6 @@
 <pre>
     list_dump() called from src/main.cpp:13 main
-    list[0x7ffdb6ef7940] initialised in src/main.cpp:10 main 
+    list[0x7ffd926da440] initialised in src/main.cpp:10 main
     {
     real capacity  = 9
     size           = 0
@@ -20,12 +20,14 @@
           7 |   -1 |    8 | 2147483634
           8 |   -1 |    0 | 2147483634
         }
-    Elements:
+    Ordered elements:
+    Physical indexes:
     }
 </pre>
+<img src="0.svg">
 <pre>
     list_dump() called from src/main.cpp:19 main
-    list[0x7ffdb6ef7940] initialised in src/main.cpp:10 main 
+    list[0x7ffd926da440] initialised in src/main.cpp:10 main
     {
     real capacity  = 9
     size           = 3
@@ -45,12 +47,14 @@
           7 |   -1 |    8 | 2147483634
           8 |   -1 |    0 | 2147483634
         }
-    Elements: 0 10 20
+    Ordered elements: 0 10 20
+    Physical indexes: 1 2 3
     }
 </pre>
+<img src="1.svg">
 <pre>
     list_dump() called from src/main.cpp:23 main
-    list[0x7ffdb6ef7940] initialised in src/main.cpp:10 main 
+    list[0x7ffd926da440] initialised in src/main.cpp:10 main
     {
     real capacity  = 9
     size           = 4
@@ -70,12 +74,14 @@
           7 |   -1 |    8 | 2147483634
           8 |   -1 |    0 | 2147483634
         }
-    Elements: 0 10 15 20
+    Ordered elements: 0 10 15 20
+    Physical indexes: 1 2 4 3
     }
 </pre>
+<img src="2.svg">
 <pre>
     list_dump() called from src/main.cpp:27 main
-    list[0x7ffdb6ef7940] initialised in src/main.cpp:10 main 
+    list[0x7ffd926da440] initialised in src/main.cpp:10 main
     {
     real capacity  = 9
     size           = 5
@@ -95,12 +101,14 @@
           7 |   -1 |    8 | 2147483634
           8 |   -1 |    0 | 2147483634
         }
-    Elements: 0 10 20 15 20
+    Ordered elements: 0 10 20 15 20
+    Physical indexes: 1 2 5 4 3
     }
 </pre>
+<img src="3.svg">
 <pre>
     list_dump() called from src/main.cpp:35 main
-    list[0x7ffdb6ef7940] initialised in src/main.cpp:10 main 
+    list[0x7ffd926da440] initialised in src/main.cpp:10 main
     {
     real capacity  = 17
     size           = 10
@@ -128,6 +136,8 @@
          15 |   -1 |   16 | 2147483634
          16 |   -1 |    0 | 2147483634
         }
-    Elements: 0 10 70 80 90 60 50 20 15 20
+    Ordered elements: 0 10 70 80 90 60 50 20 15 20
+    Physical indexes: 1 2 8 9 10 3 4 5 6 7
     }
 </pre>
+<img src="4.svg">

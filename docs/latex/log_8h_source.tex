@@ -10,18 +10,36 @@
 \DoxyCodeLine{\Hypertarget{log_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
 \DoxyCodeLine{\Hypertarget{log_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
 \DoxyCodeLine{\Hypertarget{log_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00015}\mbox{\hyperlink{struct_log_file_data}{00015}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_log_file_data}{LogFileData}}\ \{}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00016}\mbox{\hyperlink{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b}{00016}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_log_file_data_aa2532f60b605d24a48ce4e86236e8d2b}{filename}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00017}\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{00017}}\ \ \ \ \ FILE*\ \mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00018}00018\ \};}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00028}00028\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{log_8h_a871c297aa3487813db55d6e90ca9eea4}{log\_printf}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}../utils/text/text\_lib.h"{}}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00017}00017\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include<windows.h>}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00019}00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00026}\mbox{\hyperlink{struct_log_file_data}{00026}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_log_file_data}{LogFileData}}\ \{}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00027}\mbox{\hyperlink{struct_log_file_data_a08317b020a10b14f4a31d35d4c2237fb}{00027}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_log_file_data_a08317b020a10b14f4a31d35d4c2237fb}{dir}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00028}\mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{00028}}\ \ \ \ \ FILE*\ \mbox{\hyperlink{struct_log_file_data_a6cee51f74b20002956d076717f2a416c}{file}}\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\Hypertarget{log_8h_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00038}00038\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_a0084efb0fc28d09429574caed2723ff0}{log\_open\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ mode\ =\ \textcolor{stringliteral}{"{}ab"{}});}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00039}00039\ }
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00047}00047\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_adbd07eb33ee1a2336466f870015e1270}{log\_close\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log);}
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{log_8h_source_l00049}00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifndef\ LOG\_H\_}}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00030}\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{00030}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\_FILENAME\_LEN}}\ =\ 256;}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00031}\mbox{\hyperlink{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}{00031}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}{timestamp\_dir}}[\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\_FILENAME\_LEN}}]\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00032}00032\ \};}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00042}00042\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{log_8h_a871c297aa3487813db55d6e90ca9eea4}{log\_printf}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00052}00052\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_a0084efb0fc28d09429574caed2723ff0}{log\_open\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ mode\ =\ \textcolor{stringliteral}{"{}ab"{}});}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00061}00061\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_adbd07eb33ee1a2336466f870015e1270}{log\_close\_file}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ log);}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00070}00070\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_a609dd627e34437a8d567e736d52d2f66}{log\_create\_dir}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dir\_name);}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00079}00079\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{log_8h_a24c272a6f8933d9e0bb1caf878b6e4cf}{log\_create\_timestamp\_dir}}(\mbox{\hyperlink{struct_log_file_data}{LogFileData}}*\ \mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}});}
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{log_8h_source_l00081}00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \#ifndef\ LOG\_H\_}}
 
 \end{DoxyCode}

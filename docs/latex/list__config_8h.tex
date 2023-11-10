@@ -1,0 +1,249 @@
+\doxysection{src/list\+\_\+config.h File Reference}
+\hypertarget{list__config_8h}{}\label{list__config_8h}\index{src/list\_config.h@{src/list\_config.h}}
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \"{}utils/macros.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_list_node}{List\+Node}}
+\item 
+struct \mbox{\hyperlink{struct_list}{List}}
+\begin{DoxyCompactList}\small\item\em Specifies \doxylink{struct_list}{List} data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{list__config_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG}}
+\item 
+\#define \mbox{\hyperlink{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83}{ELEM\+\_\+\+T\+\_\+\+PRINTF}}~\"{}\%d\"{}
+\item 
+\#define \mbox{\hyperlink{list__config_8h_a28247397371c86dfb08fefc04e1bdcab}{LIST\+\_\+\+FOREACH}}(list\+\_\+,  phys\+\_\+i\+\_\+,  log\+\_\+i\+\_\+)~    for (; phys\+\_\+i\+\_\+ $>$ 0 \&\& log\+\_\+i\+\_\+ $<$= (list\+\_\+).size; phys\+\_\+i\+\_\+ = (list\+\_\+).arr\mbox{[}phys\+\_\+i\+\_\+\mbox{]}.next, (log\+\_\+i\+\_\+)++)
+\item 
+\#define \mbox{\hyperlink{list__config_8h_acb92b54ac93a0bb337c095461c2c559b}{LIST\+\_\+\+IS\+\_\+\+FOREACH\+\_\+\+VALID}}(list\+\_\+,  log\+\_\+i\+\_\+, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \mbox{\hyperlink{list__config_8h_a080be3bdb852e7fe4ae09e67e3f7012c}{Elem\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{list__config_8h_afa3f98187627cf2e4259b5fec1f4509c}{list\+\_\+is\+\_\+initialised}} (const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Returns true if list was initialised. \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\+\_\+head}} (const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Returns list head index. \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b}{list\+\_\+tail}} (const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Returns list tail index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{struct_list_node}{List\+Node}} \mbox{\hyperlink{list__config_8h_a2e7264da34a5ef9cca50aadcc29b0dbc}{POISON\+\_\+\+LIST\+\_\+\+NODE}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{list__config_8h_ad72dbcf6d0153db1b8d8a58001feed83}\label{list__config_8h_ad72dbcf6d0153db1b8d8a58001feed83} 
+\index{list\_config.h@{list\_config.h}!DEBUG@{DEBUG}}
+\index{DEBUG@{DEBUG}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG}{DEBUG}}
+{\footnotesize\ttfamily \#define DEBUG}
+
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00008}{8}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+\Hypertarget{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83}\label{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83} 
+\index{list\_config.h@{list\_config.h}!ELEM\_T\_PRINTF@{ELEM\_T\_PRINTF}}
+\index{ELEM\_T\_PRINTF@{ELEM\_T\_PRINTF}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{ELEM\_T\_PRINTF}{ELEM\_T\_PRINTF}}
+{\footnotesize\ttfamily \#define ELEM\+\_\+\+T\+\_\+\+PRINTF~\"{}\%d\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00012}{12}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+\Hypertarget{list__config_8h_a28247397371c86dfb08fefc04e1bdcab}\label{list__config_8h_a28247397371c86dfb08fefc04e1bdcab} 
+\index{list\_config.h@{list\_config.h}!LIST\_FOREACH@{LIST\_FOREACH}}
+\index{LIST\_FOREACH@{LIST\_FOREACH}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{LIST\_FOREACH}{LIST\_FOREACH}}
+{\footnotesize\ttfamily \#define LIST\+\_\+\+FOREACH(\begin{DoxyParamCaption}\item[{}]{list\+\_\+,  }\item[{}]{phys\+\_\+i\+\_\+,  }\item[{}]{log\+\_\+i\+\_\+ }\end{DoxyParamCaption})~    for (; phys\+\_\+i\+\_\+ $>$ 0 \&\& log\+\_\+i\+\_\+ $<$= (list\+\_\+).size; phys\+\_\+i\+\_\+ = (list\+\_\+).arr\mbox{[}phys\+\_\+i\+\_\+\mbox{]}.next, (log\+\_\+i\+\_\+)++)}
+
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00108}{108}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+\Hypertarget{list__config_8h_acb92b54ac93a0bb337c095461c2c559b}\label{list__config_8h_acb92b54ac93a0bb337c095461c2c559b} 
+\index{list\_config.h@{list\_config.h}!LIST\_IS\_FOREACH\_VALID@{LIST\_IS\_FOREACH\_VALID}}
+\index{LIST\_IS\_FOREACH\_VALID@{LIST\_IS\_FOREACH\_VALID}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{LIST\_IS\_FOREACH\_VALID}{LIST\_IS\_FOREACH\_VALID}}
+{\footnotesize\ttfamily \#define LIST\+\_\+\+IS\+\_\+\+FOREACH\+\_\+\+VALID(\begin{DoxyParamCaption}\item[{}]{list\+\_\+,  }\item[{}]{log\+\_\+i\+\_\+,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (log\_i\_\ !=\ (list\_).size)\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_VA\_ARGS\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00111}{111}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{list__config_8h_a080be3bdb852e7fe4ae09e67e3f7012c}\label{list__config_8h_a080be3bdb852e7fe4ae09e67e3f7012c} 
+\index{list\_config.h@{list\_config.h}!Elem\_t@{Elem\_t}}
+\index{Elem\_t@{Elem\_t}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{Elem\_t}{Elem\_t}}
+{\footnotesize\ttfamily typedef int \mbox{\hyperlink{list__config_8h_a080be3bdb852e7fe4ae09e67e3f7012c}{Elem\+\_\+t}}}
+
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00010}{10}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{list__config_8h_a7766cde664f76a9c27e02ba58446985a}\label{list__config_8h_a7766cde664f76a9c27e02ba58446985a} 
+\index{list\_config.h@{list\_config.h}!list\_head@{list\_head}}
+\index{list\_head@{list\_head}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{list\_head()}{list\_head()}}
+{\footnotesize\ttfamily ssize\+\_\+t list\+\_\+head (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns list head index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ssize\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00094}{94}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{return}\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[0].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}};}
+\DoxyCodeLine{00096\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{list__config_8h_source_l00061}{List\+::arr}}, and \mbox{\hyperlink{list__config_8h_source_l00022}{List\+Node\+::next}}.
+
+
+
+Referenced by \mbox{\hyperlink{list_8cpp_source_l00346}{list\+\_\+delete()}}, \mbox{\hyperlink{dump_8cpp_source_l00007}{list\+\_\+dump()}}, \mbox{\hyperlink{dump_8cpp_source_l00073}{list\+\_\+dump\+\_\+dot()}}, \mbox{\hyperlink{list_8cpp_source_l00132}{list\+\_\+find\+\_\+by\+\_\+logical\+\_\+index()}}, \mbox{\hyperlink{list_8cpp_source_l00167}{list\+\_\+find\+\_\+by\+\_\+value()}}, \mbox{\hyperlink{list_8cpp_source_l00315}{list\+\_\+insert\+\_\+after()}}, \mbox{\hyperlink{list_8cpp_source_l00086}{list\+\_\+linearise()}}, \mbox{\hyperlink{list_8cpp_source_l00197}{list\+\_\+logical\+\_\+index\+\_\+by\+\_\+physical()}}, \mbox{\hyperlink{list_8h_source_l00078}{list\+\_\+pushfront()}}, and \mbox{\hyperlink{list_8cpp_source_l00234}{list\+\_\+verify()}}.
+
+\Hypertarget{list__config_8h_afa3f98187627cf2e4259b5fec1f4509c}\label{list__config_8h_afa3f98187627cf2e4259b5fec1f4509c} 
+\index{list\_config.h@{list\_config.h}!list\_is\_initialised@{list\_is\_initialised}}
+\index{list\_is\_initialised@{list\_is\_initialised}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{list\_is\_initialised()}{list\_is\_initialised()}}
+{\footnotesize\ttfamily bool list\+\_\+is\+\_\+initialised (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if list was initialised. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00081}{81}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ !(list-\/>\mbox{\hyperlink{struct_list_a060349c5ef0d0f5fc2fda093859ab4fb}{free\_head}}\ ==\ list-\/>\mbox{\hyperlink{struct_list_ab34fc59a62fae5133a727e6d20c1bca8}{UNITIALISED\_VAL}}\ \&\&}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}}\ \ ==\ list-\/>\mbox{\hyperlink{struct_list_ab34fc59a62fae5133a727e6d20c1bca8}{UNITIALISED\_VAL}}\ \&\&}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a1b69e23ea4ca60dad8bf2895194fbe67}{size}}\ \ \ \ \ \ ==\ list-\/>\mbox{\hyperlink{struct_list_ab34fc59a62fae5133a727e6d20c1bca8}{UNITIALISED\_VAL}}\ \&\&}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a01f7c747c250dcfaf760279c55489184}{is\_linear}}\ ==\ \textcolor{keyword}{false}\ \&\&\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}\ ==\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00086\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{list__config_8h_source_l00061}{List\+::arr}}, \mbox{\hyperlink{list__config_8h_source_l00063}{List\+::capacity}}, \mbox{\hyperlink{list__config_8h_source_l00059}{List\+::free\+\_\+head}}, \mbox{\hyperlink{list__config_8h_source_l00066}{List\+::is\+\_\+linear}}, \mbox{\hyperlink{list__config_8h_source_l00064}{List\+::size}}, and \mbox{\hyperlink{list__config_8h_source_l00034}{List\+::\+UNITIALISED\+\_\+\+VAL}}.
+
+
+
+Referenced by \mbox{\hyperlink{list_8cpp_source_l00005}{list\+\_\+ctor()}}, \mbox{\hyperlink{dump_8cpp_source_l00007}{list\+\_\+dump()}}, and \mbox{\hyperlink{list_8cpp_source_l00234}{list\+\_\+verify()}}.
+
+\Hypertarget{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b}\label{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b} 
+\index{list\_config.h@{list\_config.h}!list\_tail@{list\_tail}}
+\index{list\_tail@{list\_tail}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{list\_tail()}{list\_tail()}}
+{\footnotesize\ttfamily ssize\+\_\+t list\+\_\+tail (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns list tail index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ssize\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00104}{104}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[0].\mbox{\hyperlink{struct_list_node_a00da3815b26fa42ecd7fe8f3b846b7dc}{prev}};}
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{list__config_8h_source_l00061}{List\+::arr}}, and \mbox{\hyperlink{list__config_8h_source_l00018}{List\+Node\+::prev}}.
+
+
+
+Referenced by \mbox{\hyperlink{list_8cpp_source_l00346}{list\+\_\+delete()}}, \mbox{\hyperlink{dump_8cpp_source_l00007}{list\+\_\+dump()}}, \mbox{\hyperlink{dump_8cpp_source_l00073}{list\+\_\+dump\+\_\+dot()}}, \mbox{\hyperlink{list_8cpp_source_l00315}{list\+\_\+insert\+\_\+after()}}, \mbox{\hyperlink{list_8h_source_l00066}{list\+\_\+pushback()}}, and \mbox{\hyperlink{list_8cpp_source_l00234}{list\+\_\+verify()}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{list__config_8h_a2e7264da34a5ef9cca50aadcc29b0dbc}\label{list__config_8h_a2e7264da34a5ef9cca50aadcc29b0dbc} 
+\index{list\_config.h@{list\_config.h}!POISON\_LIST\_NODE@{POISON\_LIST\_NODE}}
+\index{POISON\_LIST\_NODE@{POISON\_LIST\_NODE}!list\_config.h@{list\_config.h}}
+\doxysubsubsection{\texorpdfstring{POISON\_LIST\_NODE}{POISON\_LIST\_NODE}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{struct_list_node}{List\+Node}} POISON\+\_\+\+LIST\+\_\+\+NODE}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{\mbox{\hyperlink{struct_list_node_aa8f6ccda2c9c2c518d9082cfc78559ae}{ListNode::EMPTY\_INDEX}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_list_node_ac162e855f91f6040d224ad8a714fb449}{ListNode::POISON}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_list_node_aa8f6ccda2c9c2c518d9082cfc78559ae}{ListNode::EMPTY\_INDEX}}\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{list__config_8h_source_l00026}{26}} of file \mbox{\hyperlink{list__config_8h_source}{list\+\_\+config.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{list_8cpp_source_l00043}{list\+\_\+dtor()}}.
+

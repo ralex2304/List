@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('struct_log_file_data.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="struct_log_file_data-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LogFileData Struct Reference</div></div>
 </div><!--header-->
@@ -103,17 +104,42 @@ $(document).ready(function(){initNavTree('struct_log_file_data.html',''); initRe
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa2532f60b605d24a48ce4e86236e8d2b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_log_file_data.html#aa2532f60b605d24a48ce4e86236e8d2b">filename</a> = nullptr</td></tr>
-<tr class="separator:aa2532f60b605d24a48ce4e86236e8d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08317b020a10b14f4a31d35d4c2237fb"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_log_file_data.html#a08317b020a10b14f4a31d35d4c2237fb">dir</a> = nullptr</td></tr>
+<tr class="separator:a08317b020a10b14f4a31d35d4c2237fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cee51f74b20002956d076717f2a416c"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> = nullptr</td></tr>
 <tr class="separator:a6cee51f74b20002956d076717f2a416c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6590abf896eaa61ac742810928e553e4"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a> [<a class="el" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>] = {}</td></tr>
+<tr class="separator:a6590abf896eaa61ac742810928e553e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ab9f84da35b2dba4a3a3e5dba3aa7b9b5"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a> = 256</td></tr>
+<tr class="separator:ab9f84da35b2dba4a3a3e5dba3aa7b9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Log file data struct. </p>
 <dl class="section attention"><dt>Attention</dt><dd>You may use <a class="el" href="struct_log_file_data.html" title="Log file data struct.">LogFileData</a> as global var </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00015">15</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00026">26</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a08317b020a10b14f4a31d35d4c2237fb" name="a08317b020a10b14f4a31d35d4c2237fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08317b020a10b14f4a31d35d4c2237fb">&#9670;&#160;</a></span>dir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* LogFileData::dir = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00027">27</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00050">log_create_timestamp_dir()</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
+
+</div>
+</div>
 <a id="a6cee51f74b20002956d076717f2a416c" name="a6cee51f74b20002956d076717f2a416c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cee51f74b20002956d076717f2a416c">&#9670;&#160;</a></span>file</h2>
 
@@ -126,27 +152,53 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00017">17</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00028">28</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00039">log_close_file()</a>, <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>, and <a class="el" href="log_8cpp_source.html#l00003">log_printf()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00072">log_close_file()</a>, <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>, and <a class="el" href="log_8cpp_source.html#l00003">log_printf()</a>.</p>
 
 </div>
 </div>
-<a id="aa2532f60b605d24a48ce4e86236e8d2b" name="aa2532f60b605d24a48ce4e86236e8d2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2532f60b605d24a48ce4e86236e8d2b">&#9670;&#160;</a></span>filename</h2>
+<a id="ab9f84da35b2dba4a3a3e5dba3aa7b9b5" name="ab9f84da35b2dba4a3a3e5dba3aa7b9b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">&#9670;&#160;</a></span>MAX_FILENAME_LEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t LogFileData::MAX_FILENAME_LEN = 256</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00030">30</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00050">log_create_timestamp_dir()</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
+
+</div>
+</div>
+<a id="a6590abf896eaa61ac742810928e553e4" name="a6590abf896eaa61ac742810928e553e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6590abf896eaa61ac742810928e553e4">&#9670;&#160;</a></span>timestamp_dir</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* LogFileData::filename = nullptr</td>
+          <td class="memname">char LogFileData::timestamp_dir[<a class="el" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>] = {}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00016">16</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="log_8h_source.html#l00031">31</a> of file <a class="el" href="log_8h_source.html">log.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00050">log_create_timestamp_dir()</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
 
 </div>
 </div>

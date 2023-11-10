@@ -100,15 +100,21 @@ $(document).ready(function(){initNavTree('log_8cpp.html',''); initResizable(); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:adab5e89ed01fa9fb9c55544d3a21629b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#adab5e89ed01fa9fb9c55544d3a21629b">log_printf</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>, const char *format,...)</td></tr>
+<tr class="memitem:adab5e89ed01fa9fb9c55544d3a21629b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#adab5e89ed01fa9fb9c55544d3a21629b">log_printf</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>, const char *format,...)</td></tr>
 <tr class="memdesc:adab5e89ed01fa9fb9c55544d3a21629b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints data in printf format to log file.  <br /></td></tr>
 <tr class="separator:adab5e89ed01fa9fb9c55544d3a21629b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14e1237e4072873a2976b48d52b10429"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a14e1237e4072873a2976b48d52b10429">log_open_file</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>, const char *mode)</td></tr>
+<tr class="memitem:a14e1237e4072873a2976b48d52b10429"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a14e1237e4072873a2976b48d52b10429">log_open_file</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>, const char *mode)</td></tr>
 <tr class="memdesc:a14e1237e4072873a2976b48d52b10429"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens log file.  <br /></td></tr>
 <tr class="separator:a14e1237e4072873a2976b48d52b10429"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4294d549b20fd1af99c3fbee5cf4dc99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>)</td></tr>
+<tr class="memitem:a24c272a6f8933d9e0bb1caf878b6e4cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a24c272a6f8933d9e0bb1caf878b6e4cf">log_create_timestamp_dir</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>)</td></tr>
+<tr class="memdesc:a24c272a6f8933d9e0bb1caf878b6e4cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates dir woth timestamp in log_file.dir. Saves it's name to log_file.timestamp_dir.  <br /></td></tr>
+<tr class="separator:a24c272a6f8933d9e0bb1caf878b6e4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4294d549b20fd1af99c3fbee5cf4dc99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a> (<a class="el" href="struct_log_file_data.html">LogFileData</a> *<a class="el" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>)</td></tr>
 <tr class="memdesc:a4294d549b20fd1af99c3fbee5cf4dc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes log fle.  <br /></td></tr>
 <tr class="separator:a4294d549b20fd1af99c3fbee5cf4dc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609dd627e34437a8d567e736d52d2f66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="log_8cpp.html#a609dd627e34437a8d567e736d52d2f66">log_create_dir</a> (const char *dir_name)</td></tr>
+<tr class="memdesc:a609dd627e34437a8d567e736d52d2f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for dir by dir_name. If it doesn't exist, creates.  <br /></td></tr>
+<tr class="separator:a609dd627e34437a8d567e736d52d2f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4294d549b20fd1af99c3fbee5cf4dc99" name="a4294d549b20fd1af99c3fbee5cf4dc99"></a>
@@ -138,22 +144,140 @@ Functions</h2></td></tr>
 <dd>
 false failure </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00039">39</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                           {</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span> (fclose(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a>) != 0) {</div>
-<div class="line"><span class="lineno">   41</span>        perror(<span class="stringliteral">&quot;Error closing log_file file&quot;</span>);</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-<div class="ttc" id="alist_8cpp_html_a06336a68ce7f0258cc88d5a2bb94e4d3"><div class="ttname"><a href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a></div><div class="ttdeci">LogFileData log_file</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00004">main.cpp:4</a></div></div>
-<div class="ttc" id="astruct_log_file_data_html_a6cee51f74b20002956d076717f2a416c"><div class="ttname"><a href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">LogFileData::file</a></div><div class="ttdeci">FILE * file</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00017">log.h:17</a></div></div>
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00072">72</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>                                           {</div>
+<div class="line"><span class="lineno">   73</span>    assert(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> == <span class="keyword">nullptr</span> || fclose(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a>) != 0) {</div>
+<div class="line"><span class="lineno">   76</span>        perror(<span class="stringliteral">&quot;Error closing log_file file&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   78</span>    }</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>    <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   82</span>}</div>
+<div class="ttc" id="adump_8cpp_html_a06336a68ce7f0258cc88d5a2bb94e4d3"><div class="ttname"><a href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a></div><div class="ttdeci">LogFileData log_file</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00004">main.cpp:4</a></div></div>
+<div class="ttc" id="astruct_log_file_data_html_a6cee51f74b20002956d076717f2a416c"><div class="ttname"><a href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">LogFileData::file</a></div><div class="ttdeci">FILE * file</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00028">log.h:28</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="log_8h_source.html#l00017">LogFileData::file</a>, and <a class="el" href="main_8cpp_source.html#l00004">log_file</a>.</p>
+<p class="reference">References <a class="el" href="log_8h_source.html#l00028">LogFileData::file</a>, and <a class="el" href="main_8cpp_source.html#l00004">log_file</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00003">log_printf()</a>, and <a class="el" href="main_8cpp_source.html#l00006">main()</a>.</p>
+
+</div>
+</div>
+<a id="a609dd627e34437a8d567e736d52d2f66" name="a609dd627e34437a8d567e736d52d2f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609dd627e34437a8d567e736d52d2f66">&#9670;&#160;</a></span>log_create_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool log_create_dir </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dir_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Searches for dir by dir_name. If it doesn't exist, creates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00084">84</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>                                          {</div>
+<div class="line"><span class="lineno">   85</span>    DIR* dir = opendir(dir_name);</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (dir) {</div>
+<div class="line"><span class="lineno">   87</span>        closedir(dir);</div>
+<div class="line"><span class="lineno">   88</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ENOENT == errno) {</div>
+<div class="line"><span class="lineno">   89</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (CreateDirectory(dir_name, NULL) != 0) {</div>
+<div class="line"><span class="lineno">   91</span>            perror(<span class="stringliteral">&quot;Error creating dir&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   93</span>        }</div>
+<div class="line"><span class="lineno">   94</span><span class="preprocessor">#else </span><span class="comment">//&lt; #ifndef _WIN32</span></div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">if</span> (mkdir(dir_name, 0744) != 0) {</div>
+<div class="line"><span class="lineno">   96</span>            perror(<span class="stringliteral">&quot;Error creating dir&quot;</span>);</div>
+<div class="line"><span class="lineno">   97</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
+<div class="line"><span class="lineno">   99</span><span class="preprocessor">#endif </span><span class="comment">//&lt; #ifdef _WIN32</span></div>
+<div class="line"><span class="lineno">  100</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  101</span>        perror(<span class="stringliteral">&quot;Error detecting directory&quot;</span>);</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00050">log_create_timestamp_dir()</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
+
+</div>
+</div>
+<a id="a24c272a6f8933d9e0bb1caf878b6e4cf" name="a24c272a6f8933d9e0bb1caf878b6e4cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24c272a6f8933d9e0bb1caf878b6e4cf">&#9670;&#160;</a></span>log_create_timestamp_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool log_create_timestamp_dir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_log_file_data.html">LogFileData</a> *&#160;</td>
+          <td class="paramname"><em>log_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates dir woth timestamp in log_file.dir. Saves it's name to log_file.timestamp_dir. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">log_file</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00050">50</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>                                                     {</div>
+<div class="line"><span class="lineno">   51</span>    assert(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>[0] == <span class="charliteral">&#39;\0&#39;</span>) {</div>
+<div class="line"><span class="lineno">   54</span>        time_t ltime = time(NULL);</div>
+<div class="line"><span class="lineno">   55</span>        tm* tm = localtime(&amp;ltime);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordtype">size_t</span> str_len = <a class="code hl_function" href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a08317b020a10b14f4a31d35d4c2237fb">dir</a>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>);</div>
+<div class="line"><span class="lineno">   58</span>        str_len = <a class="code hl_function" href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>, <span class="stringliteral">&quot;/&quot;</span>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>        snprintf(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a> + str_len, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a> - str_len,</div>
+<div class="line"><span class="lineno">   61</span>                <span class="stringliteral">&quot;%02d-%02d-%04d_%02d-%02d-%02d&quot;</span>, tm-&gt;tm_mday, tm-&gt;tm_mon, tm-&gt;tm_year + 1900,</div>
+<div class="line"><span class="lineno">   62</span>                                                 tm-&gt;tm_hour, tm-&gt;tm_min, tm-&gt;tm_sec);</div>
+<div class="line"><span class="lineno">   63</span>        str_len = <a class="code hl_function" href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>, <span class="stringliteral">&quot;/&quot;</span>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a609dd627e34437a8d567e736d52d2f66">log_create_dir</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>))</div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   70</span>}</div>
+<div class="ttc" id="alog_8cpp_html_a609dd627e34437a8d567e736d52d2f66"><div class="ttname"><a href="log_8cpp.html#a609dd627e34437a8d567e736d52d2f66">log_create_dir</a></div><div class="ttdeci">bool log_create_dir(const char *dir_name)</div><div class="ttdoc">Searches for dir by dir_name. If it doesn't exist, creates.</div><div class="ttdef"><b>Definition</b> <a href="log_8cpp_source.html#l00084">log.cpp:84</a></div></div>
+<div class="ttc" id="astruct_log_file_data_html_a08317b020a10b14f4a31d35d4c2237fb"><div class="ttname"><a href="struct_log_file_data.html#a08317b020a10b14f4a31d35d4c2237fb">LogFileData::dir</a></div><div class="ttdeci">const char * dir</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00027">log.h:27</a></div></div>
+<div class="ttc" id="astruct_log_file_data_html_a6590abf896eaa61ac742810928e553e4"><div class="ttname"><a href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">LogFileData::timestamp_dir</a></div><div class="ttdeci">char timestamp_dir[MAX_FILENAME_LEN]</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00031">log.h:31</a></div></div>
+<div class="ttc" id="astruct_log_file_data_html_ab9f84da35b2dba4a3a3e5dba3aa7b9b5"><div class="ttname"><a href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">LogFileData::MAX_FILENAME_LEN</a></div><div class="ttdeci">static const size_t MAX_FILENAME_LEN</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00030">log.h:30</a></div></div>
+<div class="ttc" id="atext__lib_8cpp_html_abe1b59a7bb5e8a59513928094867ca90"><div class="ttname"><a href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a></div><div class="ttdeci">size_t strncat_len(char *dest, const char *src, const ssize_t max_len)</div><div class="ttdef"><b>Definition</b> <a href="text__lib_8cpp_source.html#l00003">text_lib.cpp:3</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="log_8h_source.html#l00027">LogFileData::dir</a>, <a class="el" href="log_8cpp_source.html#l00084">log_create_dir()</a>, <a class="el" href="main_8cpp_source.html#l00004">log_file</a>, <a class="el" href="log_8h_source.html#l00030">LogFileData::MAX_FILENAME_LEN</a>, <a class="el" href="text__lib_8cpp_source.html#l00003">strncat_len()</a>, and <a class="el" href="log_8h_source.html#l00031">LogFileData::timestamp_dir</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
 
 </div>
 </div>
@@ -197,20 +321,31 @@ false failure </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00026">26</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   26</span>                                                            {</div>
-<div class="line"><span class="lineno">   27</span>    assert(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
+<div class="line"><span class="lineno">   27</span>    assert(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
 <div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> = fopen(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#aa2532f60b605d24a48ce4e86236e8d2b">filename</a>, mode);</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">   32</span>        perror(<span class="stringliteral">&quot;Error opening log_file file&quot;</span>);</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a609dd627e34437a8d567e736d52d2f66">log_create_dir</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a08317b020a10b14f4a31d35d4c2237fb">dir</a>))</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a24c272a6f8933d9e0bb1caf878b6e4cf">log_create_timestamp_dir</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>))</div>
 <div class="line"><span class="lineno">   33</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="astruct_log_file_data_html_aa2532f60b605d24a48ce4e86236e8d2b"><div class="ttname"><a href="struct_log_file_data.html#aa2532f60b605d24a48ce4e86236e8d2b">LogFileData::filename</a></div><div class="ttdeci">const char * filename</div><div class="ttdef"><b>Definition</b> <a href="log_8h_source.html#l00016">log.h:16</a></div></div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordtype">char</span> filename[<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>] = {};</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_function" href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a>(filename, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4">timestamp_dir</a>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>);</div>
+<div class="line"><span class="lineno">   38</span>    <a class="code hl_function" href="text__lib_8cpp.html#abe1b59a7bb5e8a59513928094867ca90">strncat_len</a>(filename, <span class="stringliteral">&quot;log.html&quot;</span>, <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#ab9f84da35b2dba4a3a3e5dba3aa7b9b5">MAX_FILENAME_LEN</a>);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> = fopen(filename, mode);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">   43</span>        perror(<span class="stringliteral">&quot;Error opening log_file file&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   48</span>}</div>
+<div class="ttc" id="alog_8cpp_html_a24c272a6f8933d9e0bb1caf878b6e4cf"><div class="ttname"><a href="log_8cpp.html#a24c272a6f8933d9e0bb1caf878b6e4cf">log_create_timestamp_dir</a></div><div class="ttdeci">bool log_create_timestamp_dir(LogFileData *log_file)</div><div class="ttdoc">Creates dir woth timestamp in log_file.dir. Saves it's name to log_file.timestamp_dir.</div><div class="ttdef"><b>Definition</b> <a href="log_8cpp_source.html#l00050">log.cpp:50</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="log_8h_source.html#l00017">LogFileData::file</a>, <a class="el" href="log_8h_source.html#l00016">LogFileData::filename</a>, and <a class="el" href="main_8cpp_source.html#l00004">log_file</a>.</p>
+<p class="reference">References <a class="el" href="log_8h_source.html#l00027">LogFileData::dir</a>, <a class="el" href="log_8h_source.html#l00028">LogFileData::file</a>, <a class="el" href="log_8cpp_source.html#l00084">log_create_dir()</a>, <a class="el" href="log_8cpp_source.html#l00050">log_create_timestamp_dir()</a>, <a class="el" href="main_8cpp_source.html#l00004">log_file</a>, <a class="el" href="log_8h_source.html#l00030">LogFileData::MAX_FILENAME_LEN</a>, <a class="el" href="text__lib_8cpp_source.html#l00003">strncat_len()</a>, and <a class="el" href="log_8h_source.html#l00031">LogFileData::timestamp_dir</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="log_8cpp_source.html#l00003">log_printf()</a>, and <a class="el" href="main_8cpp_source.html#l00006">main()</a>.</p>
 
@@ -261,12 +396,12 @@ false failure </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="log_8cpp_source.html#l00003">3</a> of file <a class="el" href="log_8cpp_source.html">log.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    3</span>                                                               {</div>
-<div class="line"><span class="lineno">    4</span>    assert(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
+<div class="line"><span class="lineno">    4</span>    assert(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>);</div>
 <div class="line"><span class="lineno">    5</span>    assert(format);</div>
 <div class="line"><span class="lineno">    6</span> </div>
 <div class="line"><span class="lineno">    7</span>    <span class="keywordtype">bool</span> file_is_opened_here = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><span class="lineno">    9</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a14e1237e4072873a2976b48d52b10429">log_open_file</a>(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>))</div>
+<div class="line"><span class="lineno">    8</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a> == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><span class="lineno">    9</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a14e1237e4072873a2976b48d52b10429">log_open_file</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>))</div>
 <div class="line"><span class="lineno">   10</span>            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="lineno">   11</span>        file_is_opened_here = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   12</span>    }</div>
@@ -274,20 +409,20 @@ false failure </dd></dl>
 <div class="line"><span class="lineno">   14</span>    va_list arg_list = {};</div>
 <div class="line"><span class="lineno">   15</span>    va_start(arg_list, format);</div>
 <div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">int</span> ret = vfprintf(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a>, format, arg_list);</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">int</span> ret = vfprintf(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>-&gt;<a class="code hl_variable" href="struct_log_file_data.html#a6cee51f74b20002956d076717f2a416c">file</a>, format, arg_list);</div>
 <div class="line"><span class="lineno">   18</span> </div>
 <div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (file_is_opened_here)</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a>(<a class="code hl_variable" href="list_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>))</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a>(<a class="code hl_variable" href="dump_8cpp.html#a06336a68ce7f0258cc88d5a2bb94e4d3">log_file</a>))</div>
 <div class="line"><span class="lineno">   21</span>            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> ret;</div>
 <div class="line"><span class="lineno">   24</span>}</div>
 <div class="ttc" id="alog_8cpp_html_a14e1237e4072873a2976b48d52b10429"><div class="ttname"><a href="log_8cpp.html#a14e1237e4072873a2976b48d52b10429">log_open_file</a></div><div class="ttdeci">bool log_open_file(LogFileData *log_file, const char *mode)</div><div class="ttdoc">Opens log file.</div><div class="ttdef"><b>Definition</b> <a href="log_8cpp_source.html#l00026">log.cpp:26</a></div></div>
-<div class="ttc" id="alog_8cpp_html_a4294d549b20fd1af99c3fbee5cf4dc99"><div class="ttname"><a href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a></div><div class="ttdeci">bool log_close_file(LogFileData *log_file)</div><div class="ttdoc">Closes log fle.</div><div class="ttdef"><b>Definition</b> <a href="log_8cpp_source.html#l00039">log.cpp:39</a></div></div>
+<div class="ttc" id="alog_8cpp_html_a4294d549b20fd1af99c3fbee5cf4dc99"><div class="ttname"><a href="log_8cpp.html#a4294d549b20fd1af99c3fbee5cf4dc99">log_close_file</a></div><div class="ttdeci">bool log_close_file(LogFileData *log_file)</div><div class="ttdoc">Closes log fle.</div><div class="ttdef"><b>Definition</b> <a href="log_8cpp_source.html#l00072">log.cpp:72</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="log_8h_source.html#l00017">LogFileData::file</a>, <a class="el" href="log_8cpp_source.html#l00039">log_close_file()</a>, <a class="el" href="main_8cpp_source.html#l00004">log_file</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
+<p class="reference">References <a class="el" href="log_8h_source.html#l00028">LogFileData::file</a>, <a class="el" href="log_8cpp_source.html#l00072">log_close_file()</a>, <a class="el" href="main_8cpp_source.html#l00004">log_file</a>, and <a class="el" href="log_8cpp_source.html#l00026">log_open_file()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="list_8cpp_source.html#l00362">list_print_error()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dump_8cpp_source.html#l00196">list_print_error()</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,257 @@
+\doxysection{src/dump.h File Reference}
+\hypertarget{dump_8h}{}\label{dump_8h}\index{src/dump.h@{src/dump.h}}
+{\ttfamily \#include \"{}list\+\_\+config.\+h\"{}}\newline
+{\ttfamily \#include \"{}utils/macros.\+h\"{}}\newline
+{\ttfamily \#include \"{}log/log.\+h\"{}}\newline
+{\ttfamily \#include \"{}log/graph\+\_\+log.\+h\"{}}\newline
+{\ttfamily \#include \"{}utils/html.\+h\"{}}\newline
+{\ttfamily \#include \"{}utils/ptr\+\_\+valid.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dump_8h_a0ec984fe1730516ccbe5b5e19d059c48}{list\+\_\+dump}} (const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}list, const \mbox{\hyperlink{struct_var_code_data}{Var\+Code\+Data}} call\+\_\+data)
+\begin{DoxyCompactList}\small\item\em (Use LIST\+\_\+\+DUMP macros) Dumps list data to log \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{dump_8h_a63e1d5ffd5d6f71aede5ca67c7b99be3}{list\+\_\+dump\+\_\+dot}} (const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}list, char \texorpdfstring{$\ast$}{*}img\+\_\+filename)
+\begin{DoxyCompactList}\small\item\em Dumps list array to dot file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dump_8h_a0ec984fe1730516ccbe5b5e19d059c48}\label{dump_8h_a0ec984fe1730516ccbe5b5e19d059c48} 
+\index{dump.h@{dump.h}!list\_dump@{list\_dump}}
+\index{list\_dump@{list\_dump}!dump.h@{dump.h}}
+\doxysubsubsection{\texorpdfstring{list\_dump()}{list\_dump()}}
+{\footnotesize\ttfamily void list\+\_\+dump (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}}]{list,  }\item[{const \mbox{\hyperlink{struct_var_code_data}{Var\+Code\+Data}}}]{call\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+(Use LIST\+\_\+\+DUMP macros) Dumps list data to log 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+{\em call\+\_\+data} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{dump_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{dump_8cpp_source}{dump.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ assert(list);}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\mbox{\hyperlink{html_8h_a010fbac8fc4096415b18c664d84b12da}{HTML\_BEGIN}});}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ list\_dump()\ called\ from\ \%s:\%d\ \%s\(\backslash\)n"{}}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \%s[\%p]\ initialised\ in\ \%s:\%d\ \%s\ \(\backslash\)n"{}},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ call\_data.\mbox{\hyperlink{struct_var_code_data_a25347ec3ab07e84f5ac1b2e1220ef388}{file}},\ call\_data.\mbox{\hyperlink{struct_var_code_data_a57de68d99a4698c17ae07e31c8e6de6c}{line}},\ call\_data.\mbox{\hyperlink{struct_var_code_data_a6da889b7111ab8c530acba167462bb95}{func}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a99870814048969d69e134dc076f4cf43}{var\_data}}.\mbox{\hyperlink{struct_var_code_data_a0bde6b05c83fb7bdf1a0f20fa4677762}{name}},\ list,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a99870814048969d69e134dc076f4cf43}{var\_data}}.\mbox{\hyperlink{struct_var_code_data_a25347ec3ab07e84f5ac1b2e1220ef388}{file}},\ list-\/>\mbox{\hyperlink{struct_list_a99870814048969d69e134dc076f4cf43}{var\_data}}.\mbox{\hyperlink{struct_var_code_data_a57de68d99a4698c17ae07e31c8e6de6c}{line}},\ list-\/>\mbox{\hyperlink{struct_list_a99870814048969d69e134dc076f4cf43}{var\_data}}.\mbox{\hyperlink{struct_var_code_data_a6da889b7111ab8c530acba167462bb95}{func}});}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \{\(\backslash\)n"{}});}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ real\ capacity\ \ =\ \%zd\(\backslash\)n"{}},\ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}});}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ size\ \ \ \ \ \ \ \ \ \ \ =\ \%zd\(\backslash\)n"{}},\ list-\/>\mbox{\hyperlink{struct_list_a1b69e23ea4ca60dad8bf2895194fbe67}{size}});}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ head\ \ \ \ \ \ \ \ \ \ \ =\ \%zd\(\backslash\)n"{}},\ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list));}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ tail\ \ \ \ \ \ \ \ \ \ \ =\ \%zd\(\backslash\)n"{}},\ \mbox{\hyperlink{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b}{list\_tail}}(list));}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ free\_head\ \ \ \ \ \ =\ \%zd\(\backslash\)n"{}},\ list-\/>\mbox{\hyperlink{struct_list_a060349c5ef0d0f5fc2fda093859ab4fb}{free\_head}});}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ is\_linear\ \ \ \ \ \ =\ \%s\(\backslash\)n"{}},\ \ list-\/>\mbox{\hyperlink{struct_list_a01f7c747c250dcfaf760279c55489184}{is\_linear}}\ ?\ \textcolor{stringliteral}{"{}true"{}}\ :\ \textcolor{stringliteral}{"{}false"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \{\(\backslash\)n"{}});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{ptr__valid_8h_a9118aa9878b41057b6d2067e5d5dff2b}{is\_ptr\_valid}}(list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}))\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{list__config_8h_afa3f98187627cf2e4259b5fec1f4509c}{list\_is\_initialised}}(list))}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\mbox{\hyperlink{html_8h_aeff0254241bdd079cf60aa19016e3c44}{HTML\_RED}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ can't\ read\ (invalid\ pointer)\(\backslash\)n"{}}));}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \}\(\backslash\)n"{}}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \}\(\backslash\)n"{}}\ \mbox{\hyperlink{html_8h_a2df8677bea55f26352fc8982b34337f2}{HTML\_END}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ "{}}\textcolor{stringliteral}{"{}\ \ i\ |\ prev\ |\ next\ |\ elem\(\backslash\)n"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{for}\ (ssize\_t\ i\ =\ 0;\ i\ <\ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}};\ i++)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ "{}}\textcolor{stringliteral}{"{}\%3zd\ |\ \%4zd\ |\ \%4zd\ |\ "{}}\ \mbox{\hyperlink{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83}{ELEM\_T\_PRINTF}}\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ i,\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[i].\mbox{\hyperlink{struct_list_node_a00da3815b26fa42ecd7fe8f3b846b7dc}{prev}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[i].\mbox{\hyperlink{struct_list_node_aa74662a51b310018e7e8cde600bdce31}{elem}});}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \}\(\backslash\)n"{}});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \ \ \ Ordered\ elements:"{}});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ ssize\_t\ phys\_i\ =\ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list);}
+\DoxyCodeLine{00049\ \ \ \ \ ssize\_t\ log\_i\ =\ 0;}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{list__config_8h_a28247397371c86dfb08fefc04e1bdcab}{LIST\_FOREACH}}(*list,\ phys\_i,\ log\_i)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ "{}}\ \mbox{\hyperlink{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83}{ELEM\_T\_PRINTF}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_aa74662a51b310018e7e8cde600bdce31}{elem}});}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\(\backslash\)n\ \ \ \ Physical\ indexes:"{}});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ phys\_i\ =\ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list);}
+\DoxyCodeLine{00056\ \ \ \ \ log\_i\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{list__config_8h_a28247397371c86dfb08fefc04e1bdcab}{LIST\_FOREACH}}(*list,\ phys\_i,\ log\_i)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\ \%zu"{}},\ phys\_i);}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \}\(\backslash\)n"{}}\ \mbox{\hyperlink{html_8h_a2df8677bea55f26352fc8982b34337f2}{HTML\_END}});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{char}\ img\_filename[\mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}.\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\_FILENAME\_LEN}}]\ =\ \{\};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a63e1d5ffd5d6f71aede5ca67c7b99be3}{list\_dump\_dot}}(list,\ img\_filename);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a355f7906784ddec79b09abb331083dc6}{LOG\_}}(\textcolor{stringliteral}{"{}<img\ src=\(\backslash\)"{}../../\%s\(\backslash\)"{}>\(\backslash\)n"{}},\ img\_filename);}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{list__config_8h_source_l00061}{List\+::arr}}, \mbox{\hyperlink{list__config_8h_source_l00063}{List\+::capacity}}, \mbox{\hyperlink{list__config_8h_source_l00020}{List\+Node\+::elem}}, \mbox{\hyperlink{list__config_8h_source_l00012}{ELEM\+\_\+\+T\+\_\+\+PRINTF}}, \mbox{\hyperlink{macros_8h_source_l00036}{Var\+Code\+Data\+::file}}, \mbox{\hyperlink{list__config_8h_source_l00059}{List\+::free\+\_\+head}}, \mbox{\hyperlink{macros_8h_source_l00038}{Var\+Code\+Data\+::func}}, \mbox{\hyperlink{html_8h_source_l00005}{HTML\+\_\+\+BEGIN}}, \mbox{\hyperlink{html_8h_source_l00007}{HTML\+\_\+\+END}}, \mbox{\hyperlink{html_8h_source_l00018}{HTML\+\_\+\+RED}}, \mbox{\hyperlink{list__config_8h_source_l00066}{List\+::is\+\_\+linear}}, \mbox{\hyperlink{ptr__valid_8h_a9118aa9878b41057b6d2067e5d5dff2b}{is\+\_\+ptr\+\_\+valid()}}, \mbox{\hyperlink{macros_8h_source_l00037}{Var\+Code\+Data\+::line}}, \mbox{\hyperlink{dump_8cpp_source_l00073}{list\+\_\+dump\+\_\+dot()}}, \mbox{\hyperlink{list__config_8h_source_l00108}{LIST\+\_\+\+FOREACH}}, \mbox{\hyperlink{list__config_8h_source_l00094}{list\+\_\+head()}}, \mbox{\hyperlink{list__config_8h_source_l00081}{list\+\_\+is\+\_\+initialised()}}, \mbox{\hyperlink{list__config_8h_source_l00104}{list\+\_\+tail()}}, \mbox{\hyperlink{dump_8cpp_source_l00005}{LOG\+\_\+}}, \mbox{\hyperlink{main_8cpp_source_l00004}{log\+\_\+file}}, \mbox{\hyperlink{log_8h_source_l00028}{Log\+File\+Data\+::\+MAX\+\_\+\+FILENAME\+\_\+\+LEN}}, \mbox{\hyperlink{macros_8h_source_l00035}{Var\+Code\+Data\+::name}}, \mbox{\hyperlink{list__config_8h_source_l00022}{List\+Node\+::next}}, \mbox{\hyperlink{list__config_8h_source_l00018}{List\+Node\+::prev}}, \mbox{\hyperlink{list__config_8h_source_l00064}{List\+::size}}, and \mbox{\hyperlink{list__config_8h_source_l00069}{List\+::var\+\_\+data}}.
+
+\Hypertarget{dump_8h_a63e1d5ffd5d6f71aede5ca67c7b99be3}\label{dump_8h_a63e1d5ffd5d6f71aede5ca67c7b99be3} 
+\index{dump.h@{dump.h}!list\_dump\_dot@{list\_dump\_dot}}
+\index{list\_dump\_dot@{list\_dump\_dot}!dump.h@{dump.h}}
+\doxysubsubsection{\texorpdfstring{list\_dump\_dot()}{list\_dump\_dot()}}
+{\footnotesize\ttfamily bool list\+\_\+dump\+\_\+dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_list}{List}} \texorpdfstring{$\ast$}{*}}]{list,  }\item[{char \texorpdfstring{$\ast$}{*}}]{img\+\_\+filename }\end{DoxyParamCaption})}
+
+
+
+Dumps list array to dot file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \\
+\hline
+{\em img\+\_\+filename} & returns image filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{dump_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{dump_8cpp_source}{dump.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \#define\ BACKGROUND\_COLOR\ "{}\(\backslash\)"{}\#1f1f1f\(\backslash\)"{}"{}}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \#define\ FONT\_COLOR\ \ \ \ \ \ \ "{}\(\backslash\)"{}\#000000\(\backslash\)"{}"{}}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \#define\ NODE\_PREFIX\ \ \ \ \ \ "{}elem\_"{}}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \#define\ NODE\_PARAMS\ \ \ \ \ \ "{}shape=\(\backslash\)"{}record\(\backslash\)"{},\ style=\(\backslash\)"{}filled\(\backslash\)"{},\ fillcolor=\(\backslash\)"{}\#6e7681\(\backslash\)"{}"{}}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \#define\ ZERO\_NODE\_PARAMS\ "{}shape=\(\backslash\)"{}record\(\backslash\)"{},\ style=\(\backslash\)"{}filled\(\backslash\)"{},\ fillcolor=\(\backslash\)"{}\#6e7681\(\backslash\)"{},\ color=yellow"{}}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ assert(list);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{char}\ dot\_filename[\mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}.\mbox{\hyperlink{struct_log_file_data_ab9f84da35b2dba4a3a3e5dba3aa7b9b5}{MAX\_FILENAME\_LEN}}]\ =\ \{\};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ dot\_number\ =\ 0;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ strcat\ (dot\_filename,\ \mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}.\mbox{\hyperlink{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}{timestamp\_dir}});}
+\DoxyCodeLine{00087\ \ \ \ \ sprintf(dot\_filename\ +\ strlen(dot\_filename),\ \textcolor{stringliteral}{"{}\%zd"{}},\ dot\_number);}
+\DoxyCodeLine{00088\ \ \ \ \ strcat\ (dot\_filename,\ \textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ FILE*\ file\ =\ fopen(dot\_filename,\ \textcolor{stringliteral}{"{}wb"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{if}\ (file\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}digraph\ List\{\(\backslash\)n"{}}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ rankdir=LR;\(\backslash\)n"{}}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ graph\ [bgcolor="{}}\ \mbox{\hyperlink{dump_8cpp_a61ae6f1ae401c962137f2ae1d2a158df}{BACKGROUND\_COLOR}}\ \textcolor{stringliteral}{"{}];\(\backslash\)n"{}}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ node[color=white,\ fontcolor="{}}\ \mbox{\hyperlink{dump_8cpp_ad59310326ec82ad265f67389cb8f4906}{FONT\_COLOR}}\ \textcolor{stringliteral}{"{},\ fontsize=14];\(\backslash\)n"{}});}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}0\ ["{}}\ \mbox{\hyperlink{dump_8cpp_aaff2fdf8ba0bd580713a7c161f89529f}{ZERO\_NODE\_PARAMS}}\ \textcolor{stringliteral}{"{},\ label=\(\backslash\)"{}\ head\ =\ \%zd\ |\ "{}}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}tail\ =\ \%zd\ |\ "{}}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}free\_tail\ =\ \%zd\(\backslash\)"{}];\(\backslash\)n"{}},}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list),\ \mbox{\hyperlink{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b}{list\_tail}}(list),\ list-\/>\mbox{\hyperlink{struct_list_a060349c5ef0d0f5fc2fda093859ab4fb}{free\_head}});}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (ssize\_t\ phys\_i\ =\ 1;\ phys\_i\ <\ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}};\ phys\_i++)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\ ["{}}\ \mbox{\hyperlink{dump_8cpp_abb67cd5b7bc2dfc6a1144a5fd1afe5a6}{NODE\_PARAMS}}\ \textcolor{stringliteral}{"{},\ label=\(\backslash\)"{}\ <i>phys\ idx\ =\ \%zd\ |\ "{}},\ phys\_i,\ phys\_i);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_aa74662a51b310018e7e8cde600bdce31}{elem}}\ ==\ \mbox{\hyperlink{struct_list_node_ac162e855f91f6040d224ad8a714fb449}{ListNode::POISON}})\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}<e>elem\ =\ PZN\ |\ "{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}<e>elem\ =\ "{}}\ \mbox{\hyperlink{list__config_8h_a0e86e404fb41df2a06346b0fd53ccb83}{ELEM\_T\_PRINTF}}\ \textcolor{stringliteral}{"{}\ |\ "{}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_aa74662a51b310018e7e8cde600bdce31}{elem}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\{<p>prev\ =\ \%zd\ |\ <n>next\ =\ \%zd\}\(\backslash\)"{}"{}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_a00da3815b26fa42ecd7fe8f3b846b7dc}{prev}},\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}});}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_a00da3815b26fa42ecd7fe8f3b846b7dc}{prev}}\ ==\ -\/1)}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{},\ color=yellow"{}});}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}];\(\backslash\)n"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (ssize\_t\ phys\_i\ =\ 0;\ phys\_i\ <\ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}};\ phys\_i++)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (phys\_i\ !=\ 0)\ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}-\/>"{}});}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd"{}},\ phys\_i);}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\ [weight=10000,\ color=transparent,\ arrowtail=none];\(\backslash\)n"{}});}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ ssize\_t\ phys\_i\ =\ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list);}
+\DoxyCodeLine{00129\ \ \ \ \ ssize\_t\ log\_i\ =\ 0;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{list__config_8h_a28247397371c86dfb08fefc04e1bdcab}{LIST\_FOREACH}}(*list,\ phys\_i,\ log\_i)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}}\ !=\ 0)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd:<n>-\/>"{}}\ \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\ [color=green];\(\backslash\)n"{}},\ phys\_i,\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}});}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*if\ (list-\/>arr[phys\_i].prev\ !=\ 0)}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ FPRINTF\_(NODE\_PREFIX\ "{}\%zd:<p>-\/>"{}\ NODE\_PREFIX\ "{}\%zd\ [color=blue];\(\backslash\)n"{},\ phys\_i,\ list-\/>arr[phys\_i].prev);*/}}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ phys\_i\ =\ list-\/>\mbox{\hyperlink{struct_list_a060349c5ef0d0f5fc2fda093859ab4fb}{free\_head}};}
+\DoxyCodeLine{00140\ \ \ \ \ log\_i\ =\ 0;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{comment}{//\ macros\ is\ not\ used\ because\ of\ different\ size\ clause}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ phys\_i\ >\ 0\ \&\&\ log\_i\ <=\ list-\/>\mbox{\hyperlink{struct_list_a5056e3000572caf8b4d1e9e5aa1270ae}{capacity}}\ -\/\ list-\/>\mbox{\hyperlink{struct_list_a1b69e23ea4ca60dad8bf2895194fbe67}{size}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ phys\_i\ =\ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}},\ log\_i++)\ \{}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}}\ !=\ 0)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd:<n>-\/>"{}}\ \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\ [color=yellow];\(\backslash\)n"{}},}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ phys\_i,\ \ \ \ \ \ \ \ \ \ \ \ \ list-\/>\mbox{\hyperlink{struct_list_a24a66ba3c641f84bede6a7dcb2f8669f}{arr}}[phys\_i].\mbox{\hyperlink{struct_list_node_abcb2cbe2aeb6e214c35c2a0e82a0375b}{next}});}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}head\ [shape=rect,\ label=\(\backslash\)"{}HEAD\(\backslash\)"{},\ color=yellow,\ fillcolor=\(\backslash\)"{}\#7293ba\(\backslash\)"{},style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}tail\ [shape=rect,\ label=\(\backslash\)"{}TAIL\(\backslash\)"{},\ color=yellow,\ fillcolor=\(\backslash\)"{}\#7293ba\(\backslash\)"{},style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}free\_head\ [shape=rect,\ label=\(\backslash\)"{}FREE\_HEAD\(\backslash\)"{},"{}}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}color=yellow,\ fillcolor=\(\backslash\)"{}\#7293ba\(\backslash\)"{},\ style=filled];\(\backslash\)n"{}});}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}head-\/>tail-\/>free\_head[weight=100,\ color=transparent];"{}});}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//FPRINTF\_("{}head-\/>"{}\ NODE\_PREFIX\ "{}\%zd\ [color=yellow]\(\backslash\)n"{},\ list\_head(list));}}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\{rank=same;\ head;\ "{}}\ \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\}\(\backslash\)n"{}},\ \mbox{\hyperlink{list__config_8h_a7766cde664f76a9c27e02ba58446985a}{list\_head}}(list));}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//FPRINTF\_("{}tail-\/>"{}\ NODE\_PREFIX\ "{}\%zd\ [color=yellow]\(\backslash\)n"{},\ list\_tail(list));}}
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\{rank=same;\ tail;\ "{}}\ \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\}\(\backslash\)n"{}},\ \mbox{\hyperlink{list__config_8h_a1026ee07a285a57cb1b2e8182d933b6b}{list\_tail}}(list));}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//FPRINTF\_("{}free\_head-\/>"{}\ NODE\_PREFIX\ "{}\%zd\ [color=yellow]\(\backslash\)n"{},\ list-\/>free\_head);}}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\{rank=same;\ free\_head;\ "{}}\ \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\_PREFIX}}\ \textcolor{stringliteral}{"{}\%zd\}\(\backslash\)n"{}},\ list-\/>\mbox{\hyperlink{struct_list_a060349c5ef0d0f5fc2fda093859ab4fb}{free\_head}});}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a25dae98ac1b989ae4b73921f69e0b565}{FPRINTF\_}}(\textcolor{stringliteral}{"{}\}\(\backslash\)n"{}});}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{if}\ (fclose(file)\ !=\ 0)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ closing\ file"{}});}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ strcat\ (img\_filename,\ \mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}}.\mbox{\hyperlink{struct_log_file_data_a6590abf896eaa61ac742810928e553e4}{timestamp\_dir}});}
+\DoxyCodeLine{00172\ \ \ \ \ sprintf(img\_filename\ +\ strlen(img\_filename),\ \textcolor{stringliteral}{"{}\%zd"{}},\ dot\_number++);}
+\DoxyCodeLine{00173\ \ \ \ \ strcat\ (img\_filename,\ \textcolor{stringliteral}{"{}.svg"{}});}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{graph__log_8cpp_a7638af32477a4647619469c995c46edc}{create\_img}}(dot\_filename,\ img\_filename))\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ creating\ dot\ graph\(\backslash\)n"{}});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00181\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{list__config_8h_source_l00061}{List\+::arr}}, \mbox{\hyperlink{dump_8cpp_a61ae6f1ae401c962137f2ae1d2a158df}{BACKGROUND\+\_\+\+COLOR}}, \mbox{\hyperlink{list__config_8h_source_l00063}{List\+::capacity}}, \mbox{\hyperlink{graph__log_8cpp_source_l00003}{create\+\_\+img()}}, \mbox{\hyperlink{list__config_8h_source_l00020}{List\+Node\+::elem}}, \mbox{\hyperlink{list__config_8h_source_l00012}{ELEM\+\_\+\+T\+\_\+\+PRINTF}}, \mbox{\hyperlink{dump_8cpp_ad59310326ec82ad265f67389cb8f4906}{FONT\+\_\+\+COLOR}}, \mbox{\hyperlink{dump_8cpp_source_l00072}{FPRINTF\+\_\+}}, \mbox{\hyperlink{list__config_8h_source_l00059}{List\+::free\+\_\+head}}, \mbox{\hyperlink{list__config_8h_source_l00108}{LIST\+\_\+\+FOREACH}}, \mbox{\hyperlink{list__config_8h_source_l00094}{list\+\_\+head()}}, \mbox{\hyperlink{list__config_8h_source_l00104}{list\+\_\+tail()}}, \mbox{\hyperlink{main_8cpp_source_l00004}{log\+\_\+file}}, \mbox{\hyperlink{log_8h_source_l00028}{Log\+File\+Data\+::\+MAX\+\_\+\+FILENAME\+\_\+\+LEN}}, \mbox{\hyperlink{list__config_8h_source_l00022}{List\+Node\+::next}}, \mbox{\hyperlink{dump_8cpp_abb67cd5b7bc2dfc6a1144a5fd1afe5a6}{NODE\+\_\+\+PARAMS}}, \mbox{\hyperlink{dump_8cpp_a7ed571c41c085c3044796a42569a12cd}{NODE\+\_\+\+PREFIX}}, \mbox{\hyperlink{list__config_8h_source_l00015}{List\+Node\+::\+POISON}}, \mbox{\hyperlink{list__config_8h_source_l00018}{List\+Node\+::prev}}, \mbox{\hyperlink{list__config_8h_source_l00064}{List\+::size}}, \mbox{\hyperlink{log_8h_source_l00029}{Log\+File\+Data\+::timestamp\+\_\+dir}}, and \mbox{\hyperlink{dump_8cpp_aaff2fdf8ba0bd580713a7c161f89529f}{ZERO\+\_\+\+NODE\+\_\+\+PARAMS}}.
+
+
+
+Referenced by \mbox{\hyperlink{dump_8cpp_source_l00007}{list\+\_\+dump()}}.
+

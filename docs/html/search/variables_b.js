@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['var_5fdata_0',['var_data',['../struct_list.html#a99870814048969d69e134dc076f4cf43',1,'List']]]
+  ['timestamp_5fdir_0',['timestamp_dir',['../struct_log_file_data.html#a6590abf896eaa61ac742810928e553e4',1,'LogFileData']]]
 ];

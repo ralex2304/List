@@ -10,13 +10,13 @@
 #include "log/log.h"
 #include "utils/html.h"
 #include "utils/ptr_valid.h"
+#include "log/graph_log.h"
 
-#define DEBUG
+//#define DEBUG
 
 typedef int Elem_t;
 
 #define ELEM_T_PRINTF "%d"
-
 
 struct ListNode {
     static const Elem_t POISON = __INT_MAX__ - 13;  //< poison value
@@ -70,7 +70,7 @@ struct List {
     ssize_t capacity = UNITIALISED_VAL;     //< array capacity
     ssize_t size     = UNITIALISED_VAL;     //< number of elements in list
 
-    bool is_linear = false;     //< is list linearised (physical index equals sequantional number)
+    bool is_linear = false; //< is list linearised (physical index equals sequantional number)
 
 #ifdef DEBUG
     VarCodeData var_data;   //< keeps data about list variable (name, file, line number)
@@ -79,21 +79,18 @@ struct List {
 };
 
 /**
- * @brief (Use macros LIST_CTOR or LIST_CTOR_CAP) List constructor
+ * @brief Returns true if list was initialised
  *
  * @param list
- * @param init_capacity
- * @return int
+ * @return true
+ * @return false
  */
-int list_ctor(List* list, size_t init_capacity = List::DEFAULT_CAPACITY);
-
-/**
- * @brief List destructor
- *
- * @param list
- * @return int
- */
-int list_dtor(List* list);
+inline bool list_is_initialised(const List* list) {
+    return !(list->free_head == list->UNITIALISED_VAL &&
+             list->capacity  == list->UNITIALISED_VAL &&
+             list->size      == list->UNITIALISED_VAL &&
+             list->is_linear == false && list->arr == nullptr);
+}
 
 /**
  * @brief Returns list head index
@@ -114,6 +111,23 @@ inline ssize_t list_head(const List* list) {
 inline ssize_t list_tail(const List* list) {
     return list->arr[0].prev;
 }
+
+/**
+ * @brief (Use macros LIST_CTOR or LIST_CTOR_CAP) List constructor
+ *
+ * @param list
+ * @param init_capacity
+ * @return int
+ */
+int list_ctor(List* list, size_t init_capacity = List::DEFAULT_CAPACITY);
+
+/**
+ * @brief List destructor
+ *
+ * @param list
+ * @return int
+ */
+int list_dtor(List* list);
 
 /**
  * @brief Inserts element after physical index
@@ -152,7 +166,7 @@ inline int list_pushback(List* list, const Elem_t elem, size_t* inserted_index) 
 }
 
 /**
- * @brief Inserys element at the beginning of the list
+ * @brief Inserts element at the beginning of the list
  *
  * @param list
  * @param elem
@@ -174,21 +188,6 @@ inline int list_pushfront(List* list, const Elem_t elem, size_t* inserted_index)
 int list_delete(List* list, const size_t position, const bool no_resize = false);
 
 /**
- * @brief Prints text error to log by error code
- *
- * @param err_code
- */
-void list_print_error(const int err_code);
-
-/**
- * @brief (Use LIST_DUMP macros) Dumps list data to log
- *
- * @param list
- * @param call_data
- */
-void list_dump(const List* list, const VarCodeData call_data);
-
-/**
  * @brief (Use macros LIST_VERIFY) Verifies list data and fields
  *
  * @param list
@@ -206,22 +205,20 @@ int list_verify(const List* list);
 int list_resize(List* list, size_t new_capacity);
 
 /**
- * @brief Creates new data array and copies list elements, but in logical sequence
+ * @brief Linearises array in list. Creates new array and replaces old one
  *
  * @param list
- * @param dest new array pointer
- * @param dest_free_head returns new free_head index
- * @param dest_capacity specifies new array capacity
+ * @param new_capacity -1 if same as old
  * @return int
  */
-int list_linearise(List* list, ListNode** dest, ssize_t* dest_free_head, size_t dest_capacity);
+int list_linearise(List* list, ssize_t new_capacity = -1);
 
 /**
  * @brief Returns physical index of element with given logical index
  *
  * @param list
  * @param logical_i
- * @param physical_i returnable value. -1 if not finded
+ * @param physical_i returnable value. -1 if not found
  * @return int
  */
 int list_find_by_logical_index(const List* list, ssize_t logical_i, ssize_t* physical_i);
@@ -231,7 +228,7 @@ int list_find_by_logical_index(const List* list, ssize_t logical_i, ssize_t* phy
  *
  * @param list
  * @param elem
- * @param physical_i returnable value. -1 if not finded
+ * @param physical_i returnable value. -1 if not found
  * @return int
  */
 int list_find_by_value(const List* list, const Elem_t elem, ssize_t* physical_i);
@@ -241,24 +238,35 @@ int list_find_by_value(const List* list, const Elem_t elem, ssize_t* physical_i)
  *
  * @param list
  * @param physical_i
- * @param logical_i returnable value. -1 if not finded
+ * @param logical_i returnable value. -1 if not found
  * @return int
  */
 int list_logical_index_by_physical(const List* list, const ssize_t physical_i, ssize_t* logical_i);
 
 /**
- * @brief Returns true if list was initialised
+ * @brief (Use LIST_DUMP macros) Dumps list data to log
  *
  * @param list
+ * @param call_data
+ */
+void list_dump(const List* list, const VarCodeData call_data);
+
+/**
+ * @brief Dumps list array to dot file
+ *
+ * @param list
+ * @param img_filename returns image filename
  * @return true
  * @return false
  */
-inline bool list_is_initialised(const List* list) {
-    return !(list->free_head == list->UNITIALISED_VAL &&
-             list->capacity  == list->UNITIALISED_VAL &&
-             list->size      == list->UNITIALISED_VAL &&
-             list->is_linear == false && list->arr == nullptr);
-}
+bool list_dump_dot(const List* list, char* img_filename);
+
+/**
+ * @brief Prints text error to log by error code
+ *
+ * @param err_code
+ */
+void list_print_error(const int err_code);
 
 #ifdef DEBUG
 
@@ -353,7 +361,7 @@ inline bool list_is_initialised(const List* list) {
      *
      * @param list
      */
-    #define LIST_ASSERT(list) (void) 0
+    #define LIST_ASSERT(list) 0
 
     /**
      * @brief Checks if res is OK (enabled only in DEBUG mode)
@@ -361,7 +369,7 @@ inline bool list_is_initialised(const List* list) {
      * @param list
      * @param res
      */
-    #define LIST_OK(list, res) List::OK
+    #define LIST_OK(list, res) (void) 0
 
     /**
      * @brief Prints list dump to log (enabled only in DEBUG mode)
@@ -411,5 +419,14 @@ inline int list_resize_down(List* list) {
 
     return res;
 }
+
+#define LIST_FOREACH(list_, phys_i_, log_i_)                            \
+    for (; phys_i_ > 0 && log_i_ <= (list_).size; phys_i_ = (list_).arr[phys_i_].next, (log_i_)++)
+
+#define LIST_IS_FOREACH_VALID(list_, log_i_, ...)   do {    \
+            if (log_i_ != (list_).size) {                   \
+                __VA_ARGS__;                                \
+            }                                               \
+        } while (0)
 
 #endif //< #ifndef LIST_H_

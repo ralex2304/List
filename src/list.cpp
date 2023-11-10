@@ -2,24 +2,25 @@
 
 extern LogFileData log_file;
 
+#define CHECK_AND_RETURN(clause_, error_, ...)  if (clause_) {          \
+                                                    res |= error_;      \
+                                                    LIST_OK(list, res); \
+                                                    __VA_ARGS__;        \
+                                                    return res;         \
+                                                }
+
 int list_ctor(List* list, size_t init_capacity) {
     assert(list);
 
     int res = list->OK;
 
-    if (list_is_initialised(list)) {
-        return res | list->ALREADY_INITIALISED;
-    }
+    CHECK_AND_RETURN(list_is_initialised(list), list->ALREADY_INITIALISED);
 
     init_capacity++; //< fake element
 
     list->arr = (ListNode*)calloc(init_capacity, sizeof(ListNode));
 
-    if (list->arr == nullptr) {
-        res |= list->ALLOC_ERR;
-        LIST_OK(list, res);
-        return res;
-    }
+    CHECK_AND_RETURN(list->arr == nullptr, list->ALLOC_ERR);
 
     list->capacity = init_capacity;
     list->arr[0] = {.prev = 0, .elem = ListNode::POISON, .next = 0};
@@ -60,103 +61,85 @@ int list_resize(List* list, size_t new_capacity) {
     int res = LIST_ASSERT(list);
     assert((ssize_t)new_capacity != list->capacity);
 
-    ListNode* new_arr = nullptr;
-    ssize_t new_free_head = -1;
-    res |= list_linearise(list, &new_arr, &new_free_head, new_capacity);
+    res |= list_linearise(list, new_capacity);
 
     if (res != list->OK)
         return res;
 
-    if (new_arr == nullptr) {
-        res |= list->ALLOC_ERR;
-        LIST_OK(list, res);
-        return res;
-    }
-
-    FREE(list->arr);
-
-    list->arr = new_arr;
-    list->capacity = new_capacity;
-    list->free_head = new_free_head;
-    list->is_linear = true;
-
     return res | LIST_ASSERT(list);
 }
 
-int list_linearise(List* list, ListNode** dest, ssize_t* dest_free_head, size_t dest_capacity) {
+int list_linearise(List* list, ssize_t new_capacity) {
     int res = LIST_ASSERT(list);
-    assert(dest);
-    assert(dest_free_head);
-    assert(*dest == nullptr);
-    assert((ssize_t)dest_capacity > list->size + 1);
 
-    *dest = (ListNode*)calloc(dest_capacity, sizeof(ListNode));
+    if (new_capacity == -1) {
+        new_capacity = list->capacity;
+    }
 
-    if (*dest == nullptr) {
-        res |= list->ALLOC_ERR;
+    ListNode* new_arr = (ListNode*)calloc(new_capacity, sizeof(ListNode));
+
+    CHECK_AND_RETURN(new_arr == nullptr, list->ALLOC_ERR);
+
+    new_arr[0] = {.prev = 0, .elem = ListNode::POISON, .next = 0};
+
+    ssize_t phys_i = list_head(list);
+    ssize_t log_i = 0;
+
+    LIST_FOREACH(*list, phys_i, log_i) {
+        new_arr[log_i].next = log_i + 1;
+
+        new_arr[log_i + 1] = {.prev = log_i, .elem = list->arr[phys_i].elem, .next = 0};
+    }
+
+    LIST_IS_FOREACH_VALID(*list, log_i, {
+        res |= list->DAMAGED_PATH;
         LIST_OK(list, res);
         return res;
-    }
+    });
 
-    (*dest)[0] = {.prev = 0, .elem = ListNode::POISON, .next = 0};
+    new_arr[0].prev = log_i;
 
-    ssize_t old_i = list_head(list);
-    ssize_t new_i = 0;
 
-    while (old_i > 0) {
-        (*dest)[new_i].next = new_i + 1;
+    list->free_head = log_i + 1;
 
-        (*dest)[++new_i] = {.prev = new_i - 1, .elem = list->arr[old_i].elem, .next = 0};
+    for (phys_i = list->free_head; phys_i < (ssize_t)new_capacity; phys_i++)
+        new_arr[phys_i] = {.prev = list->UNITIALISED_VAL, .elem = ListNode::POISON,
+                           .next = phys_i + 1};
 
-        if (new_i > list->size) {
-            res |= list->DAMAGED_PATH;
-            LIST_OK(list, res);
-            return res;
-        }
-        old_i = list->arr[old_i].next;
-    }
+    new_arr[phys_i - 1].next = 0;
 
-    (*dest)[0].prev = new_i;
+    FREE(list->arr);
+    list->arr = new_arr;
+    list->capacity = new_capacity;
+    list->is_linear = true;
 
-    *dest_free_head = new_i + 1;
-
-    for (new_i = *dest_free_head; new_i < (ssize_t)dest_capacity; new_i++)
-        (*dest)[new_i] = {.prev = list->UNITIALISED_VAL, .elem = ListNode::POISON, .next = new_i + 1};
-
-    (*dest)[new_i - 1].next = 0;
-
-    return res | LIST_ASSERT(list);;
+    return res | LIST_ASSERT(list);
 }
 
 int list_find_by_logical_index(const List* list, ssize_t logical_i, ssize_t* physical_i) {
     assert(physical_i);
     int res = LIST_ASSERT(list);
 
-    if (logical_i >= list->size || logical_i < 0) {
-        res |= list->INVALID_POSITION;
-        LIST_OK(list, res);
-        *physical_i = -1;
+    CHECK_AND_RETURN(logical_i >= list->size || logical_i < 0, list->INVALID_POSITION, {
+                                                               *physical_i = -1;});
+    if (list->is_linear) {
+        *physical_i = logical_i + 1;
         return res;
     }
 
-    ssize_t i = list_head(list);
+    ssize_t phys_i = list_head(list);
     ssize_t log_i = 0;
-
-    while (i > 0) {
+    LIST_FOREACH(*list, phys_i, log_i) {
         if (logical_i-- == 0) {
-            *physical_i = i;
+            *physical_i = phys_i;
             return res;
         }
-
-        if (++log_i > list->size) {
-            res |= list->DAMAGED_PATH;
-            LIST_OK(list, res);
-            *physical_i = -1;
-            return res;
-        }
-
-        i = list->arr[i].next;
     }
+
+    LIST_IS_FOREACH_VALID(*list, log_i, {
+        res |= list->DAMAGED_PATH;
+        LIST_OK(list, res);
+    });
 
     *physical_i = -1;
 
@@ -167,31 +150,22 @@ int list_find_by_value(const List* list, const Elem_t elem, ssize_t* physical_i)
     assert(physical_i);
     int res = LIST_ASSERT(list);
 
-    if (elem == ListNode::POISON) {
-        res |= list->POISON_VAL_FOUND;
-        LIST_OK(list, res);
-        *physical_i = -1;
-        return res;
-    }
+    CHECK_AND_RETURN(elem == ListNode::POISON, list->POISON_VAL_FOUND, {
+                                               *physical_i = -1;});
 
-    ssize_t i = list_head(list);
+    ssize_t phys_i = list_head(list);
     ssize_t log_i = 0;
-
-    while (i > 0) {
-        if (list->arr[i].elem == elem) {
-            *physical_i = i;
+    LIST_FOREACH(*list, phys_i, log_i) {
+        if (list->arr[phys_i].elem == elem) {
+            *physical_i = phys_i;
             return res;
         }
-
-        if (++log_i > list->size) {
-            res |= list->DAMAGED_PATH;
-            LIST_OK(list, res);
-            *physical_i = -1;
-            return res;
-        }
-
-        i = list->arr[i].next;
     }
+
+    LIST_IS_FOREACH_VALID(*list, log_i, {
+        res |= list->DAMAGED_PATH;
+        LIST_OK(list, res);
+    });
 
     *physical_i = -1;
 
@@ -199,100 +173,34 @@ int list_find_by_value(const List* list, const Elem_t elem, ssize_t* physical_i)
 }
 
 int list_logical_index_by_physical(const List* list, const ssize_t physical_i, ssize_t* logical_i) {
-    assert(physical_i);
+    assert(logical_i);
     int res = LIST_ASSERT(list);
 
-    if (physical_i >= list->capacity || physical_i <= 0) {
-        res |= list->INVALID_POSITION;
-        LIST_OK(list, res);
-        *logical_i = -1;
+    CHECK_AND_RETURN(physical_i >= list->capacity || physical_i <= 0, list->INVALID_POSITION, {
+                                                                      *logical_i = -1;});
+    if (list->is_linear) {
+        *logical_i = physical_i - 1;
         return res;
     }
 
-    ssize_t i = list_head(list);
+    ssize_t phys_i = list_head(list);
     ssize_t log_i = 0;
-
-    while (i > 0) {
-        if (physical_i == i) {
+    LIST_FOREACH(*list, phys_i, log_i) {
+        if (physical_i == phys_i) {
             *logical_i = log_i;
             return res;
         }
-
-        if (++log_i > list->size) {
-            res |= list->DAMAGED_PATH;
-            LIST_OK(list, res);
-            *logical_i = -1;
-            return res;
-        }
-
-        i = list->arr[i].next;
     }
+
+    LIST_IS_FOREACH_VALID(*list, log_i, {
+        res |= list->DAMAGED_PATH;
+        LIST_OK(list, res);
+    });
 
     *logical_i = -1;
 
     return res;
 }
-
-#define LOG_(...) log_printf(&log_file, __VA_ARGS__)
-
-void list_dump(const List* list, const VarCodeData call_data) {
-    assert(list);
-
-    LOG_(HTML_BEGIN);
-
-    LOG_("    list_dump() called from %s:%d %s\n"
-         "    %s[%p] initialised in %s:%d %s \n",
-         call_data.file, call_data.line, call_data.func,
-         list->var_data.name, list,
-         list->var_data.file, list->var_data.line, list->var_data.func);
-
-    LOG_("    {\n");
-    LOG_("    real capacity  = %zd\n", list->capacity);
-    LOG_("    size           = %zd\n", list->size);
-    LOG_("    head           = %zd\n", list_head(list));
-    LOG_("    tail           = %zd\n", list_tail(list));
-    LOG_("    free_head      = %zd\n", list->free_head);
-    LOG_("    is_linear      = %s\n",  list->is_linear ? "true" : "false");
-    LOG_("        {\n");
-
-    if (!is_ptr_valid(list->arr)) {
-
-        if (list_is_initialised(list))
-            LOG_(HTML_RED("        can't read (invalid pointer)\n"));
-
-        LOG_("        }\n"
-             "    }\n" HTML_END);
-        return;
-    }
-
-    LOG_("        ""  i | prev | next | elem\n");
-
-    for (ssize_t i = 0; i < list->capacity; i++) {
-        LOG_("        ""%3zd | %4zd | %4zd | " ELEM_T_PRINTF "\n",
-             i, list->arr[i].prev, list->arr[i].next, list->arr[i].elem);
-    }
-
-    LOG_("        }\n");
-
-    LOG_("    Elements:");
-
-    ssize_t i = list_head(list);
-    ssize_t log_i = 0;
-
-    while (i != 0) {
-        LOG_(" " ELEM_T_PRINTF, list->arr[i].elem);
-
-        if (++log_i > list->size) {
-            LIST_OK(list, list->DAMAGED_PATH);
-            return;
-        }
-        i = list->arr[i].next;
-    }
-
-    LOG_("\n"
-         "    }\n" HTML_END);
-}
-#undef LOG_
 
 #define CHECK_ERR_(clause, err) if (clause) res |= err
 
@@ -301,10 +209,7 @@ int list_verify(const List* list) {
 
     int res = list->OK;
 
-    if (!list_is_initialised(list)) {
-        res |= list->UNITIALISED;
-        return res;
-    }
+    CHECK_AND_RETURN(!list_is_initialised(list), list->UNITIALISED);
 
     bool is_data_valid = true;
 
@@ -318,78 +223,43 @@ int list_verify(const List* list) {
     CHECK_ERR_(list->size < 0, list->NEGATIVE_SIZE);
     CHECK_ERR_(list->free_head <= 0, list->INVALID_FREE_HEAD);
 
-    if (is_data_valid) {
-        CHECK_ERR_(list_tail(list) < 0, list->INVALID_TAIL);
-        CHECK_ERR_(list_head(list) < 0, list->INVALID_HEAD);
+    if (!is_data_valid)
+        return res;
 
-        ssize_t i = list_head(list);
-        ssize_t bef_i = 0;
-        ssize_t log_i = 0;
+    CHECK_ERR_(list_tail(list) < 0, list->INVALID_TAIL);
+    CHECK_ERR_(list_head(list) < 0, list->INVALID_HEAD);
 
-        while (i > 0) {
-            CHECK_ERR_(list->arr[i].elem == ListNode::POISON, list->POISON_VAL_FOUND);
-            CHECK_ERR_(list->arr[i].prev != bef_i, list->DAMAGED_PATH);
+    ssize_t prev_phys_i = 0;
 
-            CHECK_ERR_(list->is_linear && i != log_i + 1, list->INVALID_IS_LINEAR);
+    ssize_t phys_i = list_head(list);
+    ssize_t log_i = 0;
+    LIST_FOREACH(*list, phys_i, log_i) {
+        CHECK_ERR_(list->arr[phys_i].elem == ListNode::POISON, list->POISON_VAL_FOUND);
+        CHECK_ERR_(list->arr[phys_i].prev != prev_phys_i, list->DAMAGED_PATH);
 
-            if (++log_i > list->size) {
-                res |= list->DAMAGED_PATH;
-                break;
-            }
-            bef_i = i;
-            i = list->arr[i].next;
-        }
+        CHECK_ERR_(list->is_linear && phys_i != log_i + 1, list->INVALID_IS_LINEAR);
 
-        CHECK_ERR_(log_i != list->size, list->DAMAGED_PATH);
-        CHECK_ERR_(i < 0, list->DAMAGED_PATH);
+        prev_phys_i = phys_i;
+    }
 
-        for (i = 1; i < list->capacity; i++) {
-            CHECK_ERR_(list->arr[i].prev != -1 && list->arr[i].elem == ListNode::POISON,
-                                                                           list->POISON_VAL_FOUND);
-            CHECK_ERR_(list->arr[i].prev == -1 && list->arr[i].elem != ListNode::POISON,
-                                                                           list->NON_POISON_EMPTY);
-        }
+    CHECK_ERR_(log_i != list->size, list->DAMAGED_PATH);
+    CHECK_ERR_(phys_i < 0, list->DAMAGED_PATH);
+
+    for (phys_i = 1; phys_i < list->capacity; phys_i++) {
+        CHECK_ERR_(list->arr[phys_i].prev != -1 && list->arr[phys_i].elem == ListNode::POISON,
+                                                                        list->POISON_VAL_FOUND);
+        CHECK_ERR_(list->arr[phys_i].prev == -1 && list->arr[phys_i].elem != ListNode::POISON,
+                                                                        list->NON_POISON_EMPTY);
     }
 
     return res;
 }
-
 #undef CHECK_ERR_
-
-#define PRINT_ERR_(code, descr)  if ((err_code) & List::code)                                    \
-                                    log_printf(&log_file,                                         \
-                                               HTML_TEXT(HTML_RED("!!! " #code ": " descr "\n")));
-void list_print_error(const int err_code) {
-    if (err_code == List::OK) {
-        log_printf(&log_file, HTML_TEXT(HTML_GREEN("No error\n")));
-    } else {
-        PRINT_ERR_(ALREADY_INITIALISED,  "Constructor called for already initialised or corrupted list");
-        PRINT_ERR_(UNITIALISED,          "List is not initialised");
-        PRINT_ERR_(DATA_INVALID_PTR,     "list.arr pointer is not valid for writing");
-        PRINT_ERR_(ALLOC_ERR,            "Can't allocate memory");
-        PRINT_ERR_(POISON_VAL_FOUND,     "There is poison value in list");
-        PRINT_ERR_(NON_POISON_EMPTY,     "Empty element is not poison");
-        PRINT_ERR_(LOW_CAPACITY,         "list.size > list.capacity - 1");
-        PRINT_ERR_(NEGATIVE_CAPACITY,    "Negative list.capacity");
-        PRINT_ERR_(INVALID_CAPACITY,     "Invalid capacity given");
-        PRINT_ERR_(NEGATIVE_SIZE,        "Negative list.size");
-        PRINT_ERR_(INVALID_POSITION,     "Invalid physical index given");
-        PRINT_ERR_(DAMAGED_PATH,         "List is damaged. Invalid path");
-        PRINT_ERR_(INVALID_FREE_HEAD,    "Invalid free_head field");
-        PRINT_ERR_(INVALID_TAIL,         "Invalid tail field");
-        PRINT_ERR_(INVALID_HEAD,         "Invalid head field");
-        PRINT_ERR_(INVALID_IS_LINEAR,    "is_linear flag is true, but list isn't linear");
-    }
-}
-#undef PRINT_ERR_
 
 int list_insert_after(List* list, const size_t position, const Elem_t elem, size_t* inserted_index) {
     int res = LIST_ASSERT(list);
 
-    if (list->arr[position].prev == -1) {
-        res |= list->INVALID_POSITION;
-        return res;
-    }
+    CHECK_AND_RETURN(list->arr[position].prev == -1, list->INVALID_POSITION);
 
     res |= list_resize_up(list);
     if (res != list->OK)
@@ -417,10 +287,7 @@ int list_insert_after(List* list, const size_t position, const Elem_t elem, size
 int list_delete(List* list, const size_t position, const bool no_resize) {
     int res = LIST_ASSERT(list);
 
-    if (list->arr[position].prev == -1) {
-        res |= list->INVALID_POSITION;
-        return res;
-    }
+    CHECK_AND_RETURN(list->arr[position].prev == -1, list->INVALID_POSITION);
 
     if (!no_resize) {
         res |= list_resize_down(list);
@@ -456,3 +323,6 @@ int list_ctor_debug(List* list, const VarCodeData var_data, size_t init_capacity
 }
 
 #endif //< #ifdef DEBUG
+
+
+#undef CHECK_AND_RETURN

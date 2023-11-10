@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debug_0',['DEBUG',['../list_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'list.h']]]
+  ['elem_5ft_5fprintf_0',['ELEM_T_PRINTF',['../list_8h.html#a0e86e404fb41df2a06346b0fd53ccb83',1,'list.h']]]
 ];

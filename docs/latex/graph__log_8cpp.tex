@@ -1,0 +1,48 @@
+\doxysection{src/log/graph\+\_\+log.cpp File Reference}
+\hypertarget{graph__log_8cpp}{}\label{graph__log_8cpp}\index{src/log/graph\_log.cpp@{src/log/graph\_log.cpp}}
+{\ttfamily \#include \"{}graph\+\_\+log.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{graph__log_8cpp_a7638af32477a4647619469c995c46edc}{create\+\_\+img}} (const char \texorpdfstring{$\ast$}{*}input\+\_\+filename, const char \texorpdfstring{$\ast$}{*}output\+\_\+filename)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graph__log_8cpp_a7638af32477a4647619469c995c46edc}\label{graph__log_8cpp_a7638af32477a4647619469c995c46edc} 
+\index{graph\_log.cpp@{graph\_log.cpp}!create\_img@{create\_img}}
+\index{create\_img@{create\_img}!graph\_log.cpp@{graph\_log.cpp}}
+\doxysubsubsection{\texorpdfstring{create\_img()}{create\_img()}}
+{\footnotesize\ttfamily bool create\+\_\+img (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{input\+\_\+filename,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+filename }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{graph__log_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{graph__log_8cpp_source}{graph\+\_\+log.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00004\ \ \ \ \ assert(input\_filename);}
+\DoxyCodeLine{00005\ \ \ \ \ assert(output\_filename);}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ MAX\_COMMAND\_LEN\ =\ 256;}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{char}\ command[MAX\_COMMAND\_LEN]\ =\ \{\};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ \textcolor{stringliteral}{"{}dot\ -\/Tsvg\ "{}},\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ input\_filename,\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ \textcolor{stringliteral}{"{}\ >\ "{}},\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ output\_filename,\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (system(command)\ !=\ 0)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ executing\ \(\backslash\)"{}\%s\(\backslash\)"{}\(\backslash\)n"{}},\ command);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{text__lib_8cpp_source_l00003}{strncat\+\_\+len()}}.
+

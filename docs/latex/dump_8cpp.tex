@@ -1,0 +1,107 @@
+\doxysection{src/dump.cpp File Reference}
+\hypertarget{dump_8cpp}{}\label{dump_8cpp}\index{src/dump.cpp@{src/dump.cpp}}
+{\ttfamily \#include \"{}list.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\+\_\+\+ERR\+\_\+}}(code,  descr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dump_8cpp_a17ba46d526055b57bf7ed05e21916604}{list\+\_\+print\+\_\+error}} (const int err\+\_\+code)
+\begin{DoxyCompactList}\small\item\em Prints text error to log by error code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_log_file_data}{Log\+File\+Data}} \mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\+\_\+file}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}\label{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f} 
+\index{dump.cpp@{dump.cpp}!PRINT\_ERR\_@{PRINT\_ERR\_}}
+\index{PRINT\_ERR\_@{PRINT\_ERR\_}!dump.cpp@{dump.cpp}}
+\doxysubsubsection{\texorpdfstring{PRINT\_ERR\_}{PRINT\_ERR\_}}
+{\footnotesize\ttfamily \#define PRINT\+\_\+\+ERR\+\_\+(\begin{DoxyParamCaption}\item[{}]{code,  }\item[{}]{descr }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((err\_code)\ \&\ List::code)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log\_printf(\&\mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{html_8h_af5420035dccd3dfd5325ca0638081475}{HTML\_TEXT}}(\mbox{\hyperlink{html_8h_aeff0254241bdd079cf60aa19016e3c44}{HTML\_RED}}(\textcolor{stringliteral}{"{}!!!\ "{}}\ \#code\ \textcolor{stringliteral}{"{}:\ "{}}\ descr\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}})));}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{dump_8cpp_source_l00193}{193}} of file \mbox{\hyperlink{dump_8cpp_source}{dump.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dump_8cpp_a17ba46d526055b57bf7ed05e21916604}\label{dump_8cpp_a17ba46d526055b57bf7ed05e21916604} 
+\index{dump.cpp@{dump.cpp}!list\_print\_error@{list\_print\_error}}
+\index{list\_print\_error@{list\_print\_error}!dump.cpp@{dump.cpp}}
+\doxysubsubsection{\texorpdfstring{list\_print\_error()}{list\_print\_error()}}
+{\footnotesize\ttfamily void list\+\_\+print\+\_\+error (\begin{DoxyParamCaption}\item[{const int}]{err\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+Prints text error to log by error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em err\+\_\+code} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{dump_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{dump_8cpp_source}{dump.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{if}\ (err\_code\ ==\ \mbox{\hyperlink{struct_list_adc4de19193966dec2119e6af8ae34308a7ddc74ddbf0fe8b3bf62e124db8fc755}{List::OK}})\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{log_8cpp_adab5e89ed01fa9fb9c55544d3a21629b}{log\_printf}}(\&\mbox{\hyperlink{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}{log\_file}},\ \mbox{\hyperlink{html_8h_af5420035dccd3dfd5325ca0638081475}{HTML\_TEXT}}(\mbox{\hyperlink{html_8h_a3208c6e370f00379a74f19180fbc6462}{HTML\_GREEN}}(\textcolor{stringliteral}{"{}No\ error\(\backslash\)n"{}})));}
+\DoxyCodeLine{00199\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(ALREADY\_INITIALISED,\ \textcolor{stringliteral}{"{}Constructor\ called\ for\ already\ initialised\ or\ corrupted\ list"{}});}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(UNITIALISED,\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}List\ is\ not\ initialised"{}});}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(DATA\_INVALID\_PTR,\ \ \ \ \textcolor{stringliteral}{"{}list.arr\ pointer\ is\ not\ valid\ for\ writing"{}});}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(ALLOC\_ERR,\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Can't\ allocate\ memory"{}});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(POISON\_VAL\_FOUND,\ \ \ \ \textcolor{stringliteral}{"{}There\ is\ poison\ value\ in\ list"{}});}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(NON\_POISON\_EMPTY,\ \ \ \ \textcolor{stringliteral}{"{}Empty\ element\ is\ not\ poison"{}});}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(LOW\_CAPACITY,\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}list.size\ >\ list.capacity\ -\/\ 1"{}});}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(NEGATIVE\_CAPACITY,\ \ \ \textcolor{stringliteral}{"{}Negative\ list.capacity"{}});}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_CAPACITY,\ \ \ \ \textcolor{stringliteral}{"{}Invalid\ capacity\ given"{}});}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(NEGATIVE\_SIZE,\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Negative\ list.size"{}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_POSITION,\ \ \ \ \textcolor{stringliteral}{"{}Invalid\ physical\ index\ given"{}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(DAMAGED\_PATH,\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}List\ is\ damaged.\ Invalid\ path"{}});}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_FREE\_HEAD,\ \ \ \textcolor{stringliteral}{"{}Invalid\ free\_head\ field"{}});}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_TAIL,\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ tail\ field"{}});}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_HEAD,\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ head\ field"{}});}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{dump_8cpp_a4f9e8dba978737f226f1698e5d4ac66f}{PRINT\_ERR\_}}(INVALID\_IS\_LINEAR,\ \ \ \textcolor{stringliteral}{"{}is\_linear\ flag\ is\ true,\ but\ list\ isn't\ linear"{}});}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \}}
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{html_8h_source_l00019}{HTML\+\_\+\+GREEN}}, \mbox{\hyperlink{html_8h_source_l00016}{HTML\+\_\+\+TEXT}}, \mbox{\hyperlink{main_8cpp_source_l00004}{log\+\_\+file}}, \mbox{\hyperlink{log_8cpp_source_l00003}{log\+\_\+printf()}}, \mbox{\hyperlink{list_8h_source_l00046}{List\+::\+OK}}, and \mbox{\hyperlink{dump_8cpp_source_l00193}{PRINT\+\_\+\+ERR\+\_\+}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3}\label{dump_8cpp_a06336a68ce7f0258cc88d5a2bb94e4d3} 
+\index{dump.cpp@{dump.cpp}!log\_file@{log\_file}}
+\index{log\_file@{log\_file}!dump.cpp@{dump.cpp}}
+\doxysubsubsection{\texorpdfstring{log\_file}{log\_file}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_log_file_data}{Log\+File\+Data}} log\+\_\+file\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{dump_8cpp_source_l00196}{list\+\_\+print\+\_\+error()}}, \mbox{\hyperlink{log_8cpp_source_l00072}{log\+\_\+close\+\_\+file()}}, \mbox{\hyperlink{log_8cpp_source_l00050}{log\+\_\+create\+\_\+timestamp\+\_\+dir()}}, \mbox{\hyperlink{log_8cpp_source_l00026}{log\+\_\+open\+\_\+file()}}, and \mbox{\hyperlink{log_8cpp_source_l00003}{log\+\_\+printf()}}.
+

@@ -1,0 +1,27 @@
+\doxysection{graph\+\_\+log.\+cpp}
+\hypertarget{graph__log_8cpp_source}{}\label{graph__log_8cpp_source}\index{src/log/graph\_log.cpp@{src/log/graph\_log.cpp}}
+\mbox{\hyperlink{graph__log_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph__log_8h}{graph\_log.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00003}\mbox{\hyperlink{graph__log_8cpp_a7638af32477a4647619469c995c46edc}{00003}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph__log_8cpp_a7638af32477a4647619469c995c46edc}{create\_img}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ input\_filename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ output\_filename)\ \{}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00004}00004\ \ \ \ \ assert(input\_filename);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00005}00005\ \ \ \ \ assert(output\_filename);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ MAX\_COMMAND\_LEN\ =\ 256;}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordtype}{char}\ command[MAX\_COMMAND\_LEN]\ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ \textcolor{stringliteral}{"{}dot\ -\/Tsvg\ "{}},\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ input\_filename,\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ \textcolor{stringliteral}{"{}\ >\ "{}},\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{text__lib_8cpp_abe1b59a7bb5e8a59513928094867ca90}{strncat\_len}}(command,\ output\_filename,\ MAX\_COMMAND\_LEN);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (system(command)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ executing\ \(\backslash\)"{}\%s\(\backslash\)"{}\(\backslash\)n"{}},\ command);}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{graph__log_8cpp_source_l00021}00021\ \}}
+
+\end{DoxyCode}

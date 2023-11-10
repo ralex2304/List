@@ -23,6 +23,5 @@ var struct_list =
     [ "capacity", "struct_list.html#a5056e3000572caf8b4d1e9e5aa1270ae", null ],
     [ "free_head", "struct_list.html#a060349c5ef0d0f5fc2fda093859ab4fb", null ],
     [ "is_linear", "struct_list.html#a01f7c747c250dcfaf760279c55489184", null ],
-    [ "size", "struct_list.html#a1b69e23ea4ca60dad8bf2895194fbe67", null ],
-    [ "var_data", "struct_list.html#a99870814048969d69e134dc076f4cf43", null ]
+    [ "size", "struct_list.html#a1b69e23ea4ca60dad8bf2895194fbe67", null ]
 ];
