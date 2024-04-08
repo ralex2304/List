@@ -14,6 +14,11 @@ CFLAGS_SANITIZER = -fsanitize=address,alignment,bool,bounds,enum,float-cast-over
 				   object-size,return,returns-nonnull-attribute,shift,signed-integer-overflow,$\
 				   undefined,unreachable,vla-bound,vptr
 
+OPTIMISATION = $(OPTION_FLAGS)
+LIBRARIES =
+
+LIB_ARCHS = $(LIBRARIES)
+
 SRC_DIR = src
 BUILD_DIR = build
 DOCS_DIR = docs
@@ -38,7 +43,7 @@ OBJECTS = $(OBJ:%.cpp=%.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(if $(sanitizer), $(CFLAGS_SANITIZER)) $^ -o $@
+	@$(CC) $(OPTIMISATION) $(CFLAGS) $(LIBRARIES) $(if $(sanitizer), $(CFLAGS_SANITIZER)) $^ -o $@
 
 $(BUILD_DIR):
 	@mkdir ./$@
@@ -49,7 +54,7 @@ $(MAKE_DIRS): | $(BUILD_DIR)
 -include $(DEPENDS)
 
 $(BUILD_DIR)/%.o: %.cpp | $(BUILD_DIR) $(MAKE_DIRS)
-	@$(CC) $(CFLAGS) $(if $(sanitizer), $(CFLAGS_SANITIZER)) -MMD -MP -c $< -o $@
+	@$(CC) $(OPTIMISATION) $(CFLAGS) $(if $(sanitizer), $(CFLAGS_SANITIZER)) -MMD -MP -c $< -o $@
 
 .PHONY: doxygen dox
 
@@ -57,7 +62,7 @@ doxygen dox: $(DOCS_TARGET)
 
 $(DOCS_TARGET): $(FILES:/%=%) | $(DOCS_DIR)
 	@echo "Doxygen generated %date% %time%" > $(DOCS_TARGET)
-	@doxygen.exe docs/Doxyfile
+	@doxygen docs/Doxyfile
 
 $(DOCS_DIR):
 	@mkdir ./$@

@@ -12,10 +12,19 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "../utils/text/text_lib.h"
-
 #ifdef _WIN32
+
+#define WIN(...) __VA_ARGS__
+
+#define UNIX(...)
+
 #include<windows.h>
+#else
+
+#define WIN(...)
+
+#define UNIX(...) __VA_ARGS__
+
 #endif
 
 /**
@@ -24,11 +33,16 @@
  * @attention You may use LogFileData as global var
  */
 struct LogFileData {
+    // if more than LIFETIME seconds have passed since the last write, a new file will be created
+    static const long LIFETIME = 1;
+
     const char* dir = nullptr;
     FILE* file = nullptr;
 
     static const size_t MAX_FILENAME_LEN = 256;
+
     char timestamp_dir[MAX_FILENAME_LEN] = {};
+    time_t last_write = 0;
 };
 
 /**

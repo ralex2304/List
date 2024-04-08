@@ -5,3 +5,5 @@ main.out*
 main
 build
 log
+releases/*
+!releases/Makefile

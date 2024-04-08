@@ -4,7 +4,6 @@
 LogFileData log_file = {"log"};
 
 int main() {
-    log_open_file(&log_file, "wb");
 
     List list = {};
     LIST_CTOR(&list);
@@ -12,7 +11,7 @@ int main() {
     size_t index = 0;
     LIST_DUMP(&list);
 
-    list_insert_after(&list, 0, 0, &index);
+    list_insert_after(&list, 0, 0,  &index);
     list_insert_after(&list, 1, 10, &index);
     list_insert_after(&list, 2, 20, &index);
 
@@ -35,6 +34,4 @@ int main() {
     LIST_DUMP(&list);
 
     list_dtor(&list);
-
-    log_close_file(&log_file);
 }

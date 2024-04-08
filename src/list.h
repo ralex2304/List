@@ -7,12 +7,6 @@
 #include <assert.h>
 
 #include "utils/macros.h"
-#include "log/log.h"
-#include "utils/html.h"
-#include "utils/ptr_valid.h"
-#include "log/graph_log.h"
-
-//#define DEBUG
 
 typedef int Elem_t;
 
@@ -72,9 +66,9 @@ struct List {
 
     bool is_linear = false; //< is list linearised (physical index equals sequantional number)
 
-#ifdef DEBUG
+#ifndef NDEBUG
     VarCodeData var_data;   //< keeps data about list variable (name, file, line number)
-#endif // #ifdef DEBUG
+#endif // #ifndef NDEBUG
 
 };
 
@@ -268,7 +262,7 @@ bool list_dump_dot(const List* list, char* img_filename);
  */
 void list_print_error(const int err_code);
 
-#ifdef DEBUG
+#ifndef NDEBUG
 
     /**
      * @brief (Use macros LIST_CTOR or LIST_CTOR_CAP) Constructor wrapper for debug mode
@@ -285,14 +279,14 @@ void list_print_error(const int err_code);
      *
      * @param list
      */
-    #define LIST_CTOR(list) list_ctor_debug(list, VAR_CODE_DATA_PTR(list));
+    #define LIST_CTOR(list) list_ctor_debug(list, VAR_CODE_DATA_PTR(list))
 
     /**
      * @brief Constructor with init capacity
      *
      * @param list
      */
-    #define LIST_CTOR_CAP(list, cap) list_ctor_debug(list, VAR_CODE_DATA_PTR(list), cap);
+    #define LIST_CTOR_CAP(list, cap) list_ctor_debug(list, VAR_CODE_DATA_PTR(list), cap)
 
     /**
      * @brief Verifies list data and fields
@@ -333,21 +327,21 @@ void list_print_error(const int err_code);
      */
     #define LIST_DUMP(list) list_dump(list, VAR_CODE_DATA())
 
-#else //< #ifndef DEBUG
+#else //< #ifdef NDEBUG
 
     /**
      * @brief Constructor
      *
      * @param list
      */
-    #define LIST_CTOR(list) list_ctor(list);
+    #define LIST_CTOR(list) list_ctor(list)
 
     /**
      * @brief Constructor with init capacity
      *
      * @param list
      */
-    #define LIST_CTOR_CAP(list, cap) list_ctor(list, cap);
+    #define LIST_CTOR_CAP(list, cap) list_ctor(list, cap)
 
     /**
      * @brief Verifies list data and fields (enabled only in DEBUG mode)
@@ -378,7 +372,7 @@ void list_print_error(const int err_code);
      */
     #define LIST_DUMP(list) (void) 0
 
-#endif //< #ifdef DEBUG
+#endif //< #ifndef NDEBUG
 
 /**
  * @brief Checks if list capacity is low and resizes it

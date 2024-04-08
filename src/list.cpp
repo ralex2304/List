@@ -1,5 +1,10 @@
 #include "list.h"
 
+#include "log/log.h"
+#include "utils/html.h"
+#include "utils/ptr_valid.h"
+#include "log/dot_log.h"
+
 extern LogFileData log_file;
 
 #define CHECK_AND_RETURN(clause_, error_, ...)  if (clause_) {          \
@@ -312,7 +317,7 @@ int list_delete(List* list, const size_t position, const bool no_resize) {
     return res | LIST_ASSERT(list);
 }
 
-#ifdef DEBUG
+#ifndef NDEBUG
 
 int list_ctor_debug(List* list, const VarCodeData var_data, size_t init_capacity) {
     assert(list);
@@ -322,7 +327,7 @@ int list_ctor_debug(List* list, const VarCodeData var_data, size_t init_capacity
     return list_ctor(list, init_capacity);
 }
 
-#endif //< #ifdef DEBUG
+#endif //< #ifndef NDEBUG
 
 
 #undef CHECK_AND_RETURN
