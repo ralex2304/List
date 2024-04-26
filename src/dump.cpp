@@ -1,15 +1,15 @@
 #include "list.h"
 
-#include "log/log.h"
+#include "list_log/list_log.h"
 #include "utils/html.h"
 #include "utils/ptr_valid.h"
-#include "log/dot_log.h"
+#include "list_log/list_dot_log.h"
 
-extern LogFileData log_file;
+extern ListLogFileData list_log_file;
 
 #ifndef NDEBUG
 
-#define LOG_(...) log_printf(&log_file, __VA_ARGS__)
+#define LOG_(...) list_log_printf(&list_log_file, __VA_ARGS__)
 
 void list_dump(const List* list, const VarCodeData call_data) {
     assert(list);
@@ -68,7 +68,7 @@ void list_dump(const List* list, const VarCodeData call_data) {
     LOG_("\n"
          "    }\n" HTML_END);
 
-    char img_filename[log_file.MAX_FILENAME_LEN] = {};
+    char img_filename[list_log_file.MAX_FILENAME_LEN] = {};
 
     list_dump_dot(list, img_filename);
 
@@ -88,10 +88,10 @@ bool list_dump_dot(const List* list, char* img_filename) {
 
     static size_t dot_number = 0;
 
-    char dot_filename[log_file.MAX_FILENAME_LEN] = {};
+    char dot_filename[list_log_file.MAX_FILENAME_LEN] = {};
 
-    if (snprintf(dot_filename, log_file.MAX_FILENAME_LEN,
-                 "%s%zd.dot", log_file.timestamp_dir, dot_number) <= 0)
+    if (snprintf(dot_filename, list_log_file.MAX_FILENAME_LEN,
+                 "%s%zd.dot", list_log_file.timestamp_dir, dot_number) <= 0)
         return false;
 
     FILE* file = fopen(dot_filename, "wb");
@@ -179,11 +179,11 @@ bool list_dump_dot(const List* list, char* img_filename) {
         return false;
     }
 
-    if (snprintf(img_filename, log_file.MAX_FILENAME_LEN, "%s%zd.svg",
-                 log_file.timestamp_dir, dot_number++) <= 0)
+    if (snprintf(img_filename, list_log_file.MAX_FILENAME_LEN, "%s%zd.svg",
+                 list_log_file.timestamp_dir, dot_number++) <= 0)
         return false;
 
-    if (!create_img(dot_filename, img_filename)) {
+    if (!list_dot_log_create_img(dot_filename, img_filename)) {
         fprintf(stderr, "Error creating dot graph\n");
         return false;
     }
@@ -194,12 +194,12 @@ bool list_dump_dot(const List* list, char* img_filename) {
 
 #endif //< #ifndef NDEBUG
 
-#define PRINT_ERR_(code, descr)  if ((err_code) & List::code)                                       \
-                                    log_printf(&log_file,                                           \
-                                               HTML_TEXT(HTML_RED("!!! " #code ": " descr "\n")));
+#define PRINT_ERR_(code, descr)  if ((err_code) & List::code)                                           \
+                                    list_log_printf(&list_log_file,                                     \
+                                                    HTML_TEXT(HTML_RED("!!! " #code ": " descr "\n")));
 void list_print_error(const int err_code) {
     if (err_code == List::OK) {
-        log_printf(&log_file, HTML_TEXT(HTML_GREEN("No error\n")));
+        list_log_printf(&list_log_file, HTML_TEXT(HTML_GREEN("No error\n")));
     } else {
         PRINT_ERR_(ALREADY_INITIALISED, "Constructor called for already initialised or corrupted list");
         PRINT_ERR_(UNITIALISED,         "List is not initialised");

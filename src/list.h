@@ -144,7 +144,7 @@ int list_insert_after(List* list, const size_t position, const Elem_t elem, size
  * @return int
  */
 inline int list_insert_before(List* list, const size_t position, const Elem_t elem, size_t* inserted_index) {
-    return list_insert_after(list, list->arr[position].prev, elem, inserted_index);
+    return list_insert_after(list, (size_t)list->arr[position].prev, elem, inserted_index);
 }
 
 /**
@@ -156,7 +156,7 @@ inline int list_insert_before(List* list, const size_t position, const Elem_t el
  * @return int
  */
 inline int list_pushback(List* list, const Elem_t elem, size_t* inserted_index) {
-    return list_insert_after(list, list_tail(list), elem, inserted_index);
+    return list_insert_after(list, (size_t)list_tail(list), elem, inserted_index);
 }
 
 /**
@@ -168,7 +168,7 @@ inline int list_pushback(List* list, const Elem_t elem, size_t* inserted_index) 
  * @return int
  */
 inline int list_pushfront(List* list, const Elem_t elem, size_t* inserted_index) {
-    return list_insert_before(list, list_head(list), elem, inserted_index);
+    return list_insert_before(list, (size_t)list_head(list), elem, inserted_index);
 }
 
 /**
@@ -389,7 +389,7 @@ inline int list_resize_up(List* list) {
         new_capacity = (new_capacity - 1) * 2 + 1;
 
     if (new_capacity != list->capacity)
-        return res | list_resize(list, new_capacity);
+        return res | list_resize(list, (size_t)new_capacity);
 
     return res;
 }
@@ -409,7 +409,7 @@ inline int list_resize_down(List* list) {
         new_capacity = (new_capacity - 1) / 2 + 1;
 
     if (new_capacity != list->capacity)
-        return res | list_resize(list, new_capacity);
+        return res | list_resize(list, (size_t)new_capacity);
 
     return res;
 }

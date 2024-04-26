@@ -1,7 +1,7 @@
-#include "log/log.h"
+#include "list_log/list_log.h"
 #include "list.h"
 
-LogFileData log_file = {"log"};
+ListLogFileData list_log_file = {"log"};
 
 int main() {
 

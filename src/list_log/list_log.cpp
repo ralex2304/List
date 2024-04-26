@@ -1,12 +1,12 @@
-#include "log.h"
+#include "list_log.h"
 
-int log_printf(LogFileData* log_file, const char* format, ...) {
+int list_log_printf(ListLogFileData* log_file, const char* format, ...) {
     assert(log_file);
     assert(format);
 
     bool file_is_opened_here = false;
     if (log_file->file == nullptr) {
-        if (!log_open_file(log_file))
+        if (!list_log_open_file(log_file))
             return -1;
         file_is_opened_here = true;
     }
@@ -14,27 +14,32 @@ int log_printf(LogFileData* log_file, const char* format, ...) {
     va_list arg_list = {};
     va_start(arg_list, format);
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wformat-nonliteral"
+
     int ret = vfprintf(log_file->file, format, arg_list);
 
+#pragma clang diagnostic pop
+
     if (file_is_opened_here)
-        if (!log_close_file(log_file))
+        if (!list_log_close_file(log_file))
             return -1;
 
     return ret;
 }
 
-bool log_open_file(LogFileData* log_file, const char* mode) {
+bool list_log_open_file(ListLogFileData* log_file, const char* mode) {
     assert(log_file);
 
-    if (!log_create_dir(log_file->dir))
+    if (!list_log_create_dir(log_file->dir))
         return false;
 
-    if (!log_create_timestamp_dir(log_file))
+    if (!list_log_create_timestamp_dir(log_file))
         return false;
 
-    char filename[LogFileData::MAX_FILENAME_LEN] = {};
+    char filename[ListLogFileData::MAX_FILENAME_LEN] = {};
 
-    if (snprintf(filename, LogFileData::MAX_FILENAME_LEN, "%slog.html", log_file->timestamp_dir) <= 0)
+    if (snprintf(filename, ListLogFileData::MAX_FILENAME_LEN, "%slog.html", log_file->timestamp_dir) <= 0)
         return false;
 
     log_file->file = fopen(filename, mode);
@@ -47,7 +52,7 @@ bool log_open_file(LogFileData* log_file, const char* mode) {
     return true;
 }
 
-bool log_create_timestamp_dir(LogFileData* log_file) {
+bool list_log_create_timestamp_dir(ListLogFileData* log_file) {
     assert(log_file);
 
     time_t ltime = time(NULL);
@@ -67,13 +72,13 @@ bool log_create_timestamp_dir(LogFileData* log_file) {
 
     log_file->last_write = ltime;
 
-    if (!log_create_dir(log_file->timestamp_dir))
+    if (!list_log_create_dir(log_file->timestamp_dir))
         return false;
 
     return true;
 }
 
-bool log_close_file(LogFileData* log_file) {
+bool list_log_close_file(ListLogFileData* log_file) {
     assert(log_file);
 
     if (log_file->file == nullptr || fclose(log_file->file) != 0) {
@@ -85,7 +90,7 @@ bool log_close_file(LogFileData* log_file) {
     return true;
 }
 
-bool log_create_dir(const char* dir_name) {
+bool list_log_create_dir(const char* dir_name) {
     assert(dir_name);
 
     DIR* dir = opendir(dir_name);

@@ -1,5 +1,5 @@
-#ifndef LOG_H_
-#define LOG_H_
+#ifndef LIST_LOG_H_
+#define LIST_LOG_H_
 
 #include <stdio.h>
 #include <assert.h>
@@ -32,7 +32,7 @@
  *
  * @attention You may use LogFileData as global var
  */
-struct LogFileData {
+struct ListLogFileData {
     // if more than LIFETIME seconds have passed since the last write, a new file will be created
     static const long LIFETIME = 1;
 
@@ -53,7 +53,7 @@ struct LogFileData {
  * @param ...
  * @return int
  */
-int log_printf(LogFileData* log, const char* format, ...);
+int list_log_printf(ListLogFileData* log, const char* format, ...);
 
 /**
  * @brief Opens log file
@@ -63,7 +63,7 @@ int log_printf(LogFileData* log, const char* format, ...);
  * @return true success
  * @return false failure
  */
-bool log_open_file(LogFileData* log, const char* mode = "ab");
+bool list_log_open_file(ListLogFileData* log, const char* mode = "ab");
 
 /**
  * @brief Closes log fle
@@ -72,7 +72,7 @@ bool log_open_file(LogFileData* log, const char* mode = "ab");
  * @return true success
  * @return false failure
  */
-bool log_close_file(LogFileData* log);
+bool list_log_close_file(ListLogFileData* log);
 
 /**
  * @brief Searches for dir by dir_name. If it doesn't exist, creates
@@ -81,7 +81,7 @@ bool log_close_file(LogFileData* log);
  * @return true
  * @return false
  */
-bool log_create_dir(const char* dir_name);
+bool list_log_create_dir(const char* dir_name);
 
 /**
  * @brief Creates dir woth timestamp in log_file.dir. Saves it's name to log_file.timestamp_dir
@@ -90,6 +90,6 @@ bool log_create_dir(const char* dir_name);
  * @return true
  * @return false
  */
-bool log_create_timestamp_dir(LogFileData* log_file);
+bool list_log_create_timestamp_dir(ListLogFileData* log_file);
 
-#endif // #ifndef LOG_H_
+#endif // #ifndef LIST_LOG_H_

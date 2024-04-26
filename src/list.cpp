@@ -1,11 +1,11 @@
 #include "list.h"
 
-#include "log/log.h"
+#include "list_log/list_log.h"
 #include "utils/html.h"
 #include "utils/ptr_valid.h"
-#include "log/dot_log.h"
+#include "list_log/list_dot_log.h"
 
-extern LogFileData log_file;
+extern ListLogFileData list_log_file;
 
 #define CHECK_AND_RETURN(clause_, error_, ...)  if (clause_) {          \
                                                     res |= error_;      \
@@ -27,7 +27,7 @@ int list_ctor(List* list, size_t init_capacity) {
 
     CHECK_AND_RETURN(list->arr == nullptr, list->ALLOC_ERR);
 
-    list->capacity = init_capacity;
+    list->capacity = (ssize_t)init_capacity;
     list->arr[0] = {.prev = 0, .elem = ListNode::POISON, .next = 0};
 
     for (ssize_t i = 1; i < list->capacity; i++) {
@@ -50,7 +50,7 @@ int list_dtor(List* list) {
     int res = LIST_VERIFY(list);
     LIST_OK(list, res);
 
-    fill(list->arr, list->capacity, &POISON_LIST_NODE, sizeof(POISON_LIST_NODE));
+    fill(list->arr, (size_t)list->capacity, &POISON_LIST_NODE, sizeof(POISON_LIST_NODE));
 
     FREE(list->arr);
 
@@ -66,7 +66,7 @@ int list_resize(List* list, size_t new_capacity) {
     int res = LIST_ASSERT(list);
     assert((ssize_t)new_capacity != list->capacity);
 
-    res |= list_linearise(list, new_capacity);
+    res |= list_linearise(list, (ssize_t)new_capacity);
 
     if (res != list->OK)
         return res;
@@ -81,7 +81,7 @@ int list_linearise(List* list, ssize_t new_capacity) {
         new_capacity = list->capacity;
     }
 
-    ListNode* new_arr = (ListNode*)calloc(new_capacity, sizeof(ListNode));
+    ListNode* new_arr = (ListNode*)calloc((size_t)new_capacity, sizeof(ListNode));
 
     CHECK_AND_RETURN(new_arr == nullptr, list->ALLOC_ERR);
 
@@ -270,14 +270,14 @@ int list_insert_after(List* list, const size_t position, const Elem_t elem, size
     if (res != list->OK)
         return res;
 
-    *inserted_index = list->free_head;
+    *inserted_index = (size_t)list->free_head;
     list->free_head = list->arr[*inserted_index].next;
 
-    list->arr[*inserted_index].prev = position;
+    list->arr[*inserted_index].prev = (ssize_t)position;
     list->arr[*inserted_index].next = list->arr[position].next;
 
-    list->arr[list->arr[position].next].prev = *inserted_index;
-    list->arr[position].next = *inserted_index;
+    list->arr[list->arr[position].next].prev = (ssize_t)*inserted_index;
+    list->arr[position].next = (ssize_t)*inserted_index;
 
     list->arr[*inserted_index].elem = elem;
 
@@ -305,7 +305,7 @@ int list_delete(List* list, const size_t position, const bool no_resize) {
 
     list->arr[position].prev = list->UNITIALISED_VAL;
     list->arr[position].next = list->free_head;
-    list->free_head = position;
+    list->free_head = (ssize_t)position;
 
     list->arr[position].elem = ListNode::POISON;
 
